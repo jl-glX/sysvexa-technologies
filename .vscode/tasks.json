@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Sysvexa: desarrollo",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Sysvexa: validación completa",
+      "type": "npm",
+      "script": "check",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Sysvexa: servidor de producción",
+      "type": "npm",
+      "script": "start",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

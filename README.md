@@ -23,6 +23,22 @@ npm install
 npm run dev
 ```
 
+## Ejecución en producción
+
+Requiere Node.js 24.15 o posterior dentro de la versión 24 y npm 11. El servidor incluido escucha en todas las
+interfaces para poder ejecutarse detrás de un proxy HTTPS en Linux, Windows o
+macOS:
+
+```bash
+npm ci
+npm run build
+npm start
+```
+
+Se puede cambiar el puerto con `PORT` y la interfaz con `HOST`. En una instancia
+pública debe situarse detrás de Caddy, Nginx o el balanceador del proveedor para
+terminar HTTPS; `npm start` no gestiona certificados.
+
 Comprobaciones:
 
 ```bash

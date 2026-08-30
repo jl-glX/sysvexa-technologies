@@ -11,8 +11,16 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    name: Validate (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
 
     steps:
       - name: Check out repository
@@ -41,4 +49,5 @@ jobs:
         run: npm run build
 
       - name: Audit production dependencies
+        if: runner.os == 'Linux'
         run: npm audit --omit=dev --audit-level=high
