@@ -25,9 +25,10 @@ export default function App() {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Sysvexa Technologies">
-          <span className="brand-mark"><Network size={24} /></span>
-          <span><strong>Sysvexa</strong><small>Technologies</small></span>
+        <a className="header-brand" href="#top" aria-label="Sysvexa Technologies">
+          <span className="header-logo-crop">
+            <img src="/brand/identity-visual.png" alt={t("brand.imageAlt")} />
+          </span>
         </a>
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"} aria-label={t("nav.ariaLabel")}>
           <a href="#services" onClick={closeMenu}>{t("nav.services")}</a>
