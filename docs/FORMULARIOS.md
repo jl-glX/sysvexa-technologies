@@ -12,6 +12,10 @@
 El navegador nunca recibe la clave secreta de Turnstile ni acceso directo a la
 base de datos.
 
+Después de guardar la fila, el Worker programa un aviso mínimo a
+`u3849730636@gmail.com`. El correo no contiene los datos personales de la
+solicitud y su entrega no condiciona la confirmación que ve el cliente.
+
 ## Ver solicitudes desde Cloudflare
 
 1. Entrar en el panel de Cloudflare.

@@ -186,7 +186,7 @@ export default function App() {
         <div className="footer-main">
           <div className="footer-brand"><img className="footer-mark" src="/brand/sysvexa-mark.png" alt="" /><p>{t("footer.description")}</p></div>
           <div><h3>{t("footer.servicesTitle")}</h3><a href="#services">{t("services.maintenance.title")}</a><a href="#services">{t("services.computers.title")}</a><a href="#services">{t("services.networks.title")}</a><a href="#services">{t("services.security.title")}</a></div>
-          <div><h3>{t("footer.contactTitle")}</h3><a href="mailto:hola@sysvexa.tech">hola@sysvexa.tech</a><span>{t("footer.location")}</span><span>{t("footer.schedule")}</span></div>
+          <div><h3>{t("footer.contactTitle")}</h3><a href="mailto:u3849730636@gmail.com">u3849730636@gmail.com</a><span>{t("footer.location")}</span><span>{t("footer.schedule")}</span></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Sysvexa Technologies</span><span>{t("footer.legal")}</span></div>
       </footer>
