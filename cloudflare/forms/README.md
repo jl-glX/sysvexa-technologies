@@ -3,21 +3,29 @@
 Este Worker adapta el flujo público de formularios y CAPTCHA de Umbravia Forge
 sin importar su servidor, sus cuentas ni su base multiempresa. Cloudflare
 intercepta `/api/service-requests`, valida Turnstile y persiste la solicitud en
-un PostgreSQL externo mediante Hyperdrive.
+Cloudflare D1 mediante un binding privado.
+
+D1 evita administrar otro proveedor, credenciales y conexiones de red. El
+esquema empieza con estados e índices versionados para permitir crecimiento
+controlado. La capa `repository.ts` mantiene aislada la persistencia para poder
+migrar en el futuro a PostgreSQL con Hyperdrive sin cambiar el formulario.
 
 ## Preparación
 
-1. Crear una base PostgreSQL externa y aplicar `schema.sql` con una cuenta de
-   migración. El Worker debe usar después una cuenta limitada a `INSERT` sobre
-   `sysvexa_service_requests`.
-2. Crear la configuración Hyperdrive:
+1. Crear la base D1:
 
    ```sh
-   npx wrangler hyperdrive create sysvexa-requests --connection-string="postgres://USUARIO:CLAVE@HOST:5432/BASE"
+   npx wrangler d1 create sysvexa-service-requests
    ```
 
-3. Sustituir `<HYPERDRIVE_ID>` en `wrangler.jsonc` por el identificador devuelto.
-4. Crear un widget Turnstile para `sysvexatechnologies.com`, sustituir
+2. Sustituir `<D1_DATABASE_ID>` en `wrangler.jsonc` por el identificador devuelto
+   y aplicar las migraciones versionadas:
+
+   ```sh
+   npx wrangler d1 migrations apply sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc
+   ```
+
+3. Crear un widget Turnstile para `sysvexatechnologies.com`, sustituir
    `<TURNSTILE_SITE_KEY>` por su clave pública y guardar el secreto sin
    escribirlo en el repositorio:
 
@@ -25,7 +33,7 @@ un PostgreSQL externo mediante Hyperdrive.
    npx wrangler secret put TURNSTILE_SECRET_KEY --config cloudflare/forms/wrangler.jsonc
    ```
 
-5. Regenerar tipos, validar y desplegar:
+4. Regenerar tipos, validar y desplegar:
 
    ```sh
    npm run worker:types
@@ -33,8 +41,8 @@ un PostgreSQL externo mediante Hyperdrive.
    npm run worker:deploy
    ```
 
-Las credenciales de PostgreSQL quedan dentro de Hyperdrive y el secreto de
-Turnstile dentro de Cloudflare. El navegador solo recibe la clave pública.
+El binding de D1 y el secreto de Turnstile quedan dentro de Cloudflare. El
+navegador solo recibe la clave pública.
 Las cabeceras CSP de Caddy, Nginx y del servidor Node permiten únicamente el
 script y el marco de `https://challenges.cloudflare.com` que necesita el
 widget.
