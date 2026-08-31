@@ -105,7 +105,6 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   const verification = await verifyTurnstile({
     token: input.captchaToken,
     secret: env.TURNSTILE_SECRET_KEY,
-    remoteIp: request.headers.get("CF-Connecting-IP"),
     allowedHostnames: hostnames,
   });
   if (!verification.success) {
