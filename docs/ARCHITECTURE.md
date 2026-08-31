@@ -7,7 +7,7 @@ una API, una base de datos ni un proceso Node permanente.
 ## Publicación de la web
 
 ```text
-Navegador -> Cloudflare -> Caddy en Lightsail -> release estatica actual
+Navegador -> Caddy en Lightsail -> release estatica actual
 ```
 
 - Caddy termina HTTPS en el origen y sirve `/var/www/sysvexa/current`.
@@ -20,13 +20,16 @@ Navegador -> Cloudflare -> Caddy en Lightsail -> release estatica actual
 ## Recepción de solicitudes
 
 La API está implementada como un Cloudflare Worker independiente del servidor
-Linux. Turnstile sigue siendo un widget del navegador; el Worker recibe su token,
-lo valida con Siteverify y solo después escribe en Cloudflare D1:
+Linux. La web principal no necesita el proxy general de Cloudflare: Caddy o
+Nginx envían únicamente `/api/service-requests` al dominio administrado
+`forms.sysvexatechnologies.com`. Turnstile sigue siendo un widget del navegador;
+el Worker recibe su token, lo valida con Siteverify y solo después escribe en
+Cloudflare D1:
 
 ```text
 Navegador -> widget Turnstile -> token
     |
-    +-> Worker API -> Siteverify
+    +-> Caddy/Nginx -> forms.sysvexatechnologies.com -> Worker API -> Siteverify
              |
              +-> binding DB -> Cloudflare D1
              |
@@ -55,7 +58,8 @@ Referencias de diseño:
 - D1 persiste las solicitudes y sus migraciones se versionan con el Worker.
 - Los secretos de Stripe viven en el entorno del Worker.
 - El webhook verifica la firma sobre el cuerpo original antes de escribir.
-- Caddy y Nginx solo publican la web; cambiar entre ambos no altera la API ni D1.
+- Caddy y Nginx publican la web y actúan como paso transparente para la ruta del
+  formulario; cambiar entre ambos no altera el contrato de la API ni D1.
 
 El código permanece inactivo hasta sustituir los identificadores de ejemplo,
 crear el secreto y desplegar el Worker según `cloudflare/forms/README.md`.

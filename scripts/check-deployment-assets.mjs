@@ -76,6 +76,10 @@ const sharedRoot = "/var/www/sysvexa/current";
 if (!caddy.includes(sharedRoot) || !nginx.includes(sharedRoot)) {
   throw new Error("Caddy y Nginx deben servir el mismo enlace current");
 }
+const formsUpstream = "forms.sysvexatechnologies.com";
+if (!caddy.includes(formsUpstream) || !nginx.includes(formsUpstream)) {
+  throw new Error("Caddy y Nginx deben dirigir el formulario al Worker dedicado");
+}
 
 console.log(
   `Recursos de despliegue validados (${deploymentFiles.length} operativos y ${distFiles.length} publicos).`,
