@@ -1,7 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Check, ChevronDown, CircleCheck, Clock3, HardDrive, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
+import { CaptchaWidget } from "./components/CaptchaWidget";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { submitServiceRequest } from "./lib/service-requests";
 
 const services = [
   { key: "maintenance", icon: Wrench },
@@ -11,13 +13,38 @@ const services = [
 ] as const;
 
 export default function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [requestStatus, setRequestStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
 
-  function submitRequest(event: FormEvent<HTMLFormElement>) {
+  async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    if (!captchaToken || requestStatus === "sending") return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setRequestStatus("sending");
+    try {
+      await submitServiceRequest({
+        name: String(data.get("name") ?? ""),
+        email: String(data.get("email") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        service: String(data.get("service") ?? ""),
+        details: String(data.get("details") ?? ""),
+        locale: i18n.resolvedLanguage ?? i18n.language,
+        consent: data.get("consent") === "on",
+        captchaToken,
+        website: String(data.get("website") ?? ""),
+      });
+      form.reset();
+      setRequestStatus("sent");
+    } catch {
+      setRequestStatus("error");
+    } finally {
+      setCaptchaToken("");
+      setCaptchaResetSignal((signal) => signal + 1);
+    }
   }
 
   function closeMenu() { setMenuOpen(false); }
@@ -126,16 +153,17 @@ export default function App() {
             </ul>
           </div>
           <div className="request-card">
-            {sent ? (
+            {requestStatus === "sent" ? (
               <div className="success-state" role="status">
                 <span><CircleCheck size={38} /></span>
                 <h3>{t("request.successTitle")}</h3>
                 <p>{t("request.successDescription")}</p>
-                <button type="button" className="button button-ghost" onClick={() => setSent(false)}>{t("request.newRequest")}</button>
+                <button type="button" className="button button-ghost" onClick={() => setRequestStatus("idle")}>{t("request.newRequest")}</button>
               </div>
             ) : (
-              <form onSubmit={submitRequest}>
+              <form onSubmit={submitRequest} aria-busy={requestStatus === "sending"}>
                 <div className="form-heading"><h3>{t("request.formTitle")}</h3><span>{t("request.required")}</span></div>
+                <label className="honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
                 <label>{t("request.name")}<input name="name" required autoComplete="name" placeholder={t("request.namePlaceholder")} /></label>
                 <div className="form-row">
                   <label>{t("request.email")}<input name="email" type="email" required autoComplete="email" placeholder={t("request.emailPlaceholder")} /></label>
@@ -143,8 +171,10 @@ export default function App() {
                 </div>
                 <label>{t("request.service")}<span className="select-wrap"><select name="service" required defaultValue=""><option value="" disabled>{t("request.servicePlaceholder")}</option>{services.map(({ key }) => <option key={key} value={key}>{t(`services.${key}.title`)}</option>)}</select><ChevronDown size={18} /></span></label>
                 <label>{t("request.details")}<textarea name="details" required rows={4} placeholder={t("request.detailsPlaceholder")} /></label>
-                <label className="check-label"><input type="checkbox" required /><span>{t("request.consent")}</span></label>
-                <button className="button submit-button" type="submit">{t("request.submit")} <ArrowRight size={18} /></button>
+                <label className="check-label"><input name="consent" type="checkbox" required /><span>{t("request.consent")}</span></label>
+                <CaptchaWidget onToken={setCaptchaToken} resetSignal={captchaResetSignal} />
+                {requestStatus === "error" && <p className="form-error" role="alert">{t("request.error")}</p>}
+                <button className="button submit-button" type="submit" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submit")} <ArrowRight size={18} /></button>
                 <p className="form-note"><ShieldCheck size={15} /> {t("request.privacyNote")}</p>
               </form>
             )}

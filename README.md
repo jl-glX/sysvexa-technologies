@@ -2,7 +2,7 @@
 
 Primer MVP web de una plataforma de servicios informáticos para particulares y
 pequeños negocios. Presenta el catálogo inicial, explica el proceso de trabajo y
-permite recorrer una solicitud de servicio antes de conectar el backend.
+permite enviar una solicitud de servicio a una API protegida.
 
 ## Alcance actual
 
@@ -47,15 +47,18 @@ documenta en `docs/STRIPE.md`; permanece desactivada y sin secretos por defecto.
 El actualizador reutiliza y adapta el modelo de releases seguras de Umbravia
 Forge: construcción aislada, activación atómica, salud HTTPS y rollback.
 
-La instancia no requiere base de datos. La futura API de solicitudes se plantea
-como un Cloudflare Worker con D1; la decisión y los límites se documentan en
-`docs/ARCHITECTURE.md`.
+La instancia Linux no ejecuta una base de datos ni una API permanente. El
+formulario usa un widget Cloudflare Turnstile y una ruta de Cloudflare Workers;
+el Worker valida el token y guarda la solicitud en PostgreSQL externo mediante
+Hyperdrive. La preparación y los límites se documentan en
+`cloudflare/forms/README.md` y `docs/ARCHITECTURE.md`.
 
 Comprobaciones:
 
 ```bash
 npm test
 npm run typecheck
+npm run worker:check
 npm run build
 npm run portability:clean
 npm run portability:check
@@ -64,6 +67,6 @@ npm run deploy:check
 
 ## Siguiente etapa
 
-Conectar el formulario a una API segura y crear el panel privado con el ciclo
-`Nuevo → En diagnóstico → Presupuesto enviado → Aceptado → En reparación →
-Completado`.
+Activar los recursos de Cloudflare y la base PostgreSQL externa; después se
+podrá crear el panel privado con el ciclo `Nuevo → En diagnóstico → Presupuesto
+enviado → Aceptado → En reparación → Completado`.

@@ -118,6 +118,15 @@ Caddy solicita y renueva automáticamente certificados públicos. Los puertos TC
 sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 ```
 
+El actualizador de releases no modifica `/etc/caddy`. Al activar Turnstile hay
+que instalar una vez la política CSP versionada y recargar Caddy:
+
+```sh
+sudo install -m 0644 deploy/Caddyfile /etc/caddy/Caddyfile
+sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+sudo systemctl reload caddy
+```
+
 `nginx.conf` reproduce la raíz, fallback SPA, caché y cabeceras. Antes de
 activarlo hay que instalar certificados públicos válidos, validar `nginx -t`,
 detener Caddy y arrancar Nginx. Cloudflare puede permanecer en Full (strict)

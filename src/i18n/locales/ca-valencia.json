@@ -3,6 +3,6 @@
   "nav": { "request": "Sol·licitar servici", "cta": "Demanar ajuda" },
   "hero": { "eyebrow": "Suport informàtic clar i pròxim", "primaryCta": "Sol·licitar servici", "secondaryCta": "Veure servicis" },
   "services": { "kicker": "Què faig", "description": "Servicis concrets, abast clar i recomanacions honestes. Comence pel que realment necessites.", "learnMore": "Sol·licitar este servici", "maintenance": { "title": "Manteniment i reparació" }, "networks": { "description": "Wi-Fi estable, cablejat, encaminadors i connectivitat per a llars, despatxos i negocis menuts." } },
-  "request": { "service": "Servici *", "servicePlaceholder": "Selecciona una opció", "successDescription": "Esta primera versió mostra el flux. La connexió segura amb el panell i les notificacions seran el pas següent." },
+  "request": { "service": "Servici *", "servicePlaceholder": "Selecciona una opció", "successDescription": "He rebut la teua sol·licitud. Revisaré la informació i et confirmaré el pas següent." },
   "footer": { "servicesTitle": "Servicis", "description": "Sistemes informàtics, xarxes i seguretat amb un tracte clar, responsable i pròxim.", "location": "Jaén · Servici remot i presencial segons la zona" }
 }

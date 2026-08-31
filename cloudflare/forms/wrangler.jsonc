@@ -1,0 +1,38 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "sysvexa-service-requests",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-31",
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "sysvexatechnologies.com/api/service-requests*",
+      "zone_name": "sysvexatechnologies.com"
+    },
+    {
+      "pattern": "www.sysvexatechnologies.com/api/service-requests*",
+      "zone_name": "sysvexatechnologies.com"
+    }
+  ],
+  "vars": {
+    "ALLOWED_HOSTNAMES": "sysvexatechnologies.com,www.sysvexatechnologies.com",
+    "TURNSTILE_SITE_KEY": "<TURNSTILE_SITE_KEY>"
+  },
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "<HYPERDRIVE_ID>"
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.1
+    }
+  }
+}

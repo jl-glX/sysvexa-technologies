@@ -54,7 +54,10 @@ describe("production static server", () => {
       const route = await fetch(`${origin}/solicitudes/nueva`);
       expect(route.status).toBe(200);
       expect(await route.text()).toContain("Sysvexa");
-      expect(route.headers.get("content-security-policy")).toContain("default-src 'self'");
+      const contentSecurityPolicy = route.headers.get("content-security-policy");
+      expect(contentSecurityPolicy).toContain("default-src 'self'");
+      expect(contentSecurityPolicy).toContain("script-src 'self' https://challenges.cloudflare.com");
+      expect(contentSecurityPolicy).toContain("frame-src https://challenges.cloudflare.com");
 
       const api = await fetch(`${origin}/api/unknown`);
       expect(api.status).toBe(404);
