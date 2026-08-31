@@ -5,6 +5,7 @@ interface TurnstileResponse {
   success?: boolean;
   hostname?: string;
   action?: string;
+  "error-codes"?: string[];
 }
 
 export type TurnstileVerificationReason =
@@ -18,6 +19,7 @@ export type TurnstileVerificationReason =
 export interface TurnstileVerificationResult {
   success: boolean;
   reason: TurnstileVerificationReason;
+  detail?: string;
 }
 
 export async function verifyTurnstile(options: {
@@ -31,10 +33,11 @@ export async function verifyTurnstile(options: {
     return { success: false, reason: "not_configured" };
   }
 
-  const body = new FormData();
-  body.set("secret", secret);
-  body.set("response", options.token);
-  body.set("idempotency_key", crypto.randomUUID());
+  const body = new URLSearchParams({
+    secret,
+    response: options.token,
+    idempotency_key: crypto.randomUUID(),
+  });
   // Siteverify's remoteip is optional. The Worker is reached through Caddy, so
   // CF-Connecting-IP identifies that proxy rather than the browser that solved
   // the challenge; sending it would reject an otherwise valid token.
@@ -42,15 +45,24 @@ export async function verifyTurnstile(options: {
   try {
     const response = await (options.fetcher ?? fetch)(siteverifyUrl, {
       method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
       signal: AbortSignal.timeout(8_000),
     });
-    if (!response.ok) {
-      return { success: false, reason: "provider_unavailable" };
-    }
     const result: TurnstileResponse = await response.json();
+    if (!response.ok) {
+      return {
+        success: false,
+        reason: "provider_unavailable",
+        detail: `siteverify_http_${response.status}:${result["error-codes"]?.join(",") || "unspecified"}`,
+      };
+    }
     if (!result.success) {
-      return { success: false, reason: "provider_rejected" };
+      return {
+        success: false,
+        reason: "provider_rejected",
+        detail: result["error-codes"]?.join(",") || "unspecified",
+      };
     }
     if (result.action !== "service_request") {
       return { success: false, reason: "action_mismatch" };
@@ -60,7 +72,11 @@ export async function verifyTurnstile(options: {
       return { success: false, reason: "hostname_mismatch" };
     }
     return { success: true, reason: "verified" };
-  } catch {
-    return { success: false, reason: "provider_unavailable" };
+  } catch (error) {
+    return {
+      success: false,
+      reason: "provider_unavailable",
+      detail: error instanceof Error ? `${error.name}: ${error.message}` : "unknown",
+    };
   }
 }

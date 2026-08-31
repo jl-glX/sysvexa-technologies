@@ -112,6 +112,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
       JSON.stringify({
         event: "service_request_captcha_rejected",
         reason: verification.reason,
+        detail: verification.detail,
       }),
     );
     const status = verification.reason === "not_configured" ? 503 : 403;
