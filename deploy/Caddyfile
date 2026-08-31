@@ -1,0 +1,35 @@
+(sysvexa_static) {
+	root * /var/www/sysvexa/current
+	encode zstd gzip
+
+	header {
+		-Server
+		Cache-Control "no-cache"
+		Content-Security-Policy "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'"
+		Cross-Origin-Opener-Policy "same-origin"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+	}
+
+	@versioned_assets path /assets/*
+	header @versioned_assets Cache-Control "public, max-age=31536000, immutable"
+
+	# route conserva este orden: las rutas sensibles y los métodos no seguros se
+	# rechazan antes de que el fallback SPA reescriba la petición a index.html.
+	route {
+		@private_files path /.env* /.git* /.ssh* /package*.json /Caddyfile /nginx.conf
+		respond @private_files 404
+
+		@unsafe_methods not method GET HEAD
+		respond @unsafe_methods 405
+
+		try_files {path} /index.html
+		file_server
+	}
+}
+
+sysvexatechnologies.com, www.sysvexatechnologies.com {
+	import sysvexa_static
+}

@@ -15,6 +15,7 @@ permite recorrer una solicitud de servicio antes de conectar el backend.
   fallback a inglés estadounidense cuando el navegador no está soportado.
 - Catálogos completos en castellano, gallego, catalán, aranés, francés, inglés
   estadounidense, alemán e italiano, más overrides regionales valencianos.
+- Voz en primera persona, coherente con un profesional independiente.
 
 ## Desarrollo local
 
@@ -38,6 +39,10 @@ npm start
 Se puede cambiar el puerto con `PORT` y la interfaz con `HOST`. En una instancia
 pública debe situarse detrás de Caddy, Nginx o el balanceador del proveedor para
 terminar HTTPS; `npm start` no gestiona certificados.
+
+La carpeta `deploy/` contiene configuraciones equivalentes para Caddy y Nginx,
+ambas sobre el mismo artefacto y enlace de release. La preparación de Stripe se
+documenta en `docs/STRIPE.md`; permanece desactivada y sin secretos por defecto.
 
 Comprobaciones:
 
