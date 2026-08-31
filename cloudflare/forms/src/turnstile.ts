@@ -23,7 +23,6 @@ export interface TurnstileVerificationResult {
 export async function verifyTurnstile(options: {
   token: string;
   secret: string;
-  remoteIp: string | null;
   allowedHostnames: ReadonlySet<string>;
   fetcher?: typeof fetch;
 }): Promise<TurnstileVerificationResult> {
@@ -36,7 +35,9 @@ export async function verifyTurnstile(options: {
   body.set("secret", secret);
   body.set("response", options.token);
   body.set("idempotency_key", crypto.randomUUID());
-  if (options.remoteIp) body.set("remoteip", options.remoteIp);
+  // Siteverify's remoteip is optional. The Worker is reached through Caddy, so
+  // CF-Connecting-IP identifies that proxy rather than the browser that solved
+  // the challenge; sending it would reject an otherwise valid token.
 
   try {
     const response = await (options.fetcher ?? fetch)(siteverifyUrl, {

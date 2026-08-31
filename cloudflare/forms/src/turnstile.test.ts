@@ -16,11 +16,14 @@ describe("Turnstile verification", () => {
       verifyTurnstile({
         token: "token",
         secret: "secret",
-        remoteIp: "192.0.2.1",
         allowedHostnames,
         fetcher,
       }),
     ).resolves.toEqual({ success: true, reason: "verified" });
+
+    const verificationBody = fetcher.mock.calls[0]?.[1]?.body as FormData;
+    expect(verificationBody.get("response")).toBe("token");
+    expect(verificationBody.has("remoteip")).toBe(false);
   });
 
   it("rejects action and hostname mismatches", async () => {
@@ -42,7 +45,6 @@ describe("Turnstile verification", () => {
       verifyTurnstile({
         token: "token",
         secret: "secret",
-        remoteIp: null,
         allowedHostnames,
         fetcher: wrongAction,
       }),
@@ -51,7 +53,6 @@ describe("Turnstile verification", () => {
       verifyTurnstile({
         token: "token",
         secret: "secret",
-        remoteIp: null,
         allowedHostnames,
         fetcher: wrongHostname,
       }),
@@ -63,7 +64,6 @@ describe("Turnstile verification", () => {
       verifyTurnstile({
         token: "token",
         secret: "<TURNSTILE_SECRET_KEY>",
-        remoteIp: null,
         allowedHostnames,
       }),
     ).resolves.toMatchObject({ success: false, reason: "not_configured" });
@@ -71,7 +71,6 @@ describe("Turnstile verification", () => {
       verifyTurnstile({
         token: "token",
         secret: "secret",
-        remoteIp: null,
         allowedHostnames,
         fetcher: vi.fn().mockRejectedValue(new Error("offline")),
       }),
