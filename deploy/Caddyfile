@@ -22,6 +22,13 @@
 		@private_files path /.env* /.git* /.ssh* /package*.json /Caddyfile /nginx.conf
 		respond @private_files 404
 
+		# La web puede permanecer en Solo DNS. Solo el formulario cruza el dominio
+		# dedicado cuyo origen es el Worker de Cloudflare.
+		@service_requests path /api/service-requests /api/service-requests/*
+		reverse_proxy @service_requests https://forms.sysvexatechnologies.com {
+			header_up Host forms.sysvexatechnologies.com
+		}
+
 		@unsafe_methods not method GET HEAD
 		respond @unsafe_methods 405
 

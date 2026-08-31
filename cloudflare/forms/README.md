@@ -16,7 +16,13 @@ La infraestructura activa utiliza:
 
 - base D1 `sysvexa-service-requests`;
 - widget Turnstile `Sysvexa Technologies` para `sysvexatechnologies.com`;
-- Worker `sysvexa-service-requests` en la ruta `/api/service-requests`.
+- Worker `sysvexa-service-requests` en el dominio administrado
+  `forms.sysvexatechnologies.com`.
+
+La web principal puede permanecer en modo **Solo DNS**. Caddy y Nginx conservan
+la URL pública `/api/service-requests`, pero envían únicamente esas peticiones
+al dominio dedicado del Worker. Cloudflare crea y mantiene el registro DNS y el
+certificado de ese subdominio.
 
 ## Preparar una cuenta nueva
 

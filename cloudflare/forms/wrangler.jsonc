@@ -6,12 +6,8 @@
   "compatibility_flags": ["nodejs_compat"],
   "routes": [
     {
-      "pattern": "sysvexatechnologies.com/api/service-requests*",
-      "zone_name": "sysvexatechnologies.com"
-    },
-    {
-      "pattern": "www.sysvexatechnologies.com/api/service-requests*",
-      "zone_name": "sysvexatechnologies.com"
+      "pattern": "forms.sysvexatechnologies.com",
+      "custom_domain": true
     }
   ],
   "vars": {
