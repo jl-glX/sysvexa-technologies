@@ -12,7 +12,9 @@
   ],
   "vars": {
     "ALLOWED_HOSTNAMES": "sysvexatechnologies.com,www.sysvexatechnologies.com",
-    "TURNSTILE_SITE_KEY": "0x4AAAAAAEjJ3JEov2srqIrR"
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAEjJ3JEov2srqIrR",
+    "NOTIFICATION_FROM": "formularios@sysvexatechnologies.com",
+    "NOTIFICATION_TO": "u3849730636@gmail.com"
   },
   "secrets": {
     "required": ["TURNSTILE_SECRET_KEY"]
@@ -23,6 +25,15 @@
       "database_name": "sysvexa-service-requests",
       "database_id": "c986c974-2091-4c29-8c69-5fcb85d37fae",
       "migrations_dir": "migrations"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "SERVICE_REQUEST_NOTIFICATIONS",
+      "destination_address": "u3849730636@gmail.com",
+      "allowed_sender_addresses": [
+        "formularios@sysvexatechnologies.com"
+      ]
     }
   ],
   "observability": {

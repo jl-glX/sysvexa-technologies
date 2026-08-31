@@ -1,4 +1,5 @@
 import { saveServiceRequest } from "./repository";
+import { sendServiceRequestNotification } from "./notifications";
 import { verifyTurnstile } from "./turnstile";
 import {
   parseServiceRequest,
@@ -73,7 +74,11 @@ async function readBoundedJson(request: Request): Promise<unknown> {
   }
 }
 
-async function handleRequest(request: Request, env: Env): Promise<Response> {
+async function handleRequest(
+  request: Request,
+  env: Env,
+  ctx: ExecutionContext,
+): Promise<Response> {
   const url = new URL(request.url);
   const hostnames = allowedHostnames(env);
 
@@ -121,6 +126,21 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 
   const requestId = crypto.randomUUID();
   await saveServiceRequest(env, requestId, input);
+  ctx.waitUntil(
+    sendServiceRequestNotification(env, {
+      requestId,
+      service: input.service,
+      createdAt: new Date().toISOString(),
+    }).catch((error) => {
+      console.error(
+        JSON.stringify({
+          event: "service_request_notification_failed",
+          requestId,
+          message: error instanceof Error ? error.message : "Unknown error",
+        }),
+      );
+    }),
+  );
   console.log(
     JSON.stringify({ event: "service_request_created", requestId }),
   );
@@ -128,9 +148,9 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
 }
 
 export default {
-  async fetch(request, env): Promise<Response> {
+  async fetch(request, env, ctx): Promise<Response> {
     try {
-      return await handleRequest(request, env);
+      return await handleRequest(request, env, ctx);
     } catch (error) {
       if (error instanceof ServiceRequestValidationError) {
         return json({ code: error.code }, 400);

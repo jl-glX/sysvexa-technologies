@@ -33,6 +33,8 @@ Navegador -> widget Turnstile -> token
              |
              +-> binding DB -> Cloudflare D1
              |
+             +-> binding de correo -> aviso sin datos personales
+             |
              +-> Stripe Checkout y webhook, cuando se autorice
 ```
 

@@ -84,3 +84,31 @@ npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/fo
 
 No se debe compartir una exportación de esta tabla sin revisar antes los datos
 personales que contiene.
+
+## Avisos por correo
+
+El Worker guarda primero la solicitud en D1 y programa después un aviso mínimo.
+Un fallo del correo se registra, pero no revierte la fila ni muestra un error a
+la persona que envió el formulario. El aviso no copia nombre, correo, teléfono
+ni descripción: incluye solo identificador, servicio y hora para localizar la
+fila en Studio.
+
+La configuración activa se compone de:
+
+- binding `SERVICE_REQUEST_NOTIFICATIONS`, restringido a un remitente y un
+  destino;
+- `NOTIFICATION_FROM`, el alias técnico del dominio;
+- `NOTIFICATION_TO`, la dirección de trabajo verificada en Cloudflare.
+
+Para preparar una cuenta nueva:
+
+1. Abrir **Cómputo > Servicio de correo electrónico > Enrutamiento de correo
+   electrónico > Direcciones de destino**.
+2. Añadir `u3849730636@gmail.com` y confirmar el enlace recibido en Gmail.
+3. Incorporar `sysvexatechnologies.com` a Email Routing. Cloudflare gestiona los
+   registros de correo; los registros web pueden permanecer en **Solo DNS**.
+4. Ejecutar `npm run worker:types`, `npm run worker:check` y
+   `npm run worker:deploy`.
+
+El alias `formularios@sysvexatechnologies.com` es solo el remitente técnico del
+aviso; no obliga a contratar ni administrar otra bandeja de entrada.
