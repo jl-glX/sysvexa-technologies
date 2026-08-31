@@ -58,7 +58,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           bash -n deploy/*.sh
-          test -x deploy/*.sh
+          for script in deploy/*.sh; do test -x "$script"; done
           sudo install -m 0755 deploy/auto-update.sh /usr/local/sbin/sysvexa-update
           systemd-analyze verify deploy/sysvexa-update.service deploy/sysvexa-update.timer
 
