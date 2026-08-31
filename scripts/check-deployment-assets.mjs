@@ -105,6 +105,22 @@ for (const sensitiveSuffix of ["*.pem", "*.key", "*.sql", "*.backup"]) {
   }
 }
 
+const caddyRoute = caddy.indexOf("\troute {");
+const caddyProbeResponse = caddy.indexOf("respond @automated_probes 404");
+const caddyMethodResponse = caddy.indexOf("respond @dangerous_methods 405");
+const caddySpaFallback = caddy.indexOf("try_files {path} /index.html");
+if (
+  caddyRoute === -1 ||
+  caddyProbeResponse < caddyRoute ||
+  caddyMethodResponse < caddyRoute ||
+  caddyProbeResponse > caddySpaFallback ||
+  caddyMethodResponse > caddySpaFallback
+) {
+  throw new Error(
+    "Caddy debe bloquear sondas y metodos peligrosos dentro de route antes del fallback SPA",
+  );
+}
+
 console.log(
   `Recursos de despliegue validados (${deploymentFiles.length} operativos y ${distFiles.length} publicos).`,
 );
