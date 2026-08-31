@@ -24,10 +24,13 @@ export default function App() {
 
   return (
     <div className="site-shell">
-      <header className="site-header">
+      <header className="brand-header" id="top">
         <a className="header-brand" href="#top" aria-label="Sysvexa Technologies">
-          <img className="header-mark" src="/brand/sysvexa-mark.png" alt="" />
+          <img className="header-logo" src="/brand/sysvexa-header.png" alt={t("brand.imageAlt")} />
         </a>
+      </header>
+
+      <div className="site-header">
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"} aria-label={t("nav.ariaLabel")}>
           <a href="#services" onClick={closeMenu}>{t("nav.services")}</a>
           <a href="#process" onClick={closeMenu}>{t("nav.howItWorks")}</a>
@@ -41,9 +44,9 @@ export default function App() {
             {menuOpen ? <X /> : <Menu />}
           </button>
         </div>
-      </header>
+      </div>
 
-      <main id="top">
+      <main>
         <section className="hero section-pad">
           <div className="hero-copy">
             <span className="eyebrow"><Sparkles size={15} /> {t("hero.eyebrow")}</span>
@@ -61,7 +64,7 @@ export default function App() {
           <div className="hero-visual" aria-label={t("brand.visualLabel")}>
             <div className="signal signal-one" />
             <div className="signal signal-two" />
-            <div className="brand-lockup"><img src="/brand/sysvexa-header.png" alt={t("brand.imageAlt")} /></div>
+            <div className="hero-mark"><img src="/brand/sysvexa-mark.png" alt="" /></div>
             <div className="service-status">
               <span className="status-icon"><Check size={18} /></span>
               <span><small>{t("hero.statusLabel")}</small><strong>{t("hero.statusValue")}</strong></span>
