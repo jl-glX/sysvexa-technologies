@@ -118,7 +118,16 @@ input:focus, select:focus, textarea:focus { border-color: #7ca6fa; box-shadow: 0
 .select-wrap svg { position: absolute; right: 12px; top: 14px; color: #748094; pointer-events: none; }
 .check-label { grid-template-columns: 17px 1fr !important; gap: 9px !important; align-items: flex-start; color: #6b7280 !important; font-weight: 500 !important; line-height: 1.45; }
 .check-label input { width: 15px; height: 15px; margin: 2px 0 0; accent-color: var(--blue); }
+.honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.captcha-widget { display: grid; gap: 8px; margin: 2px 0 17px; }
+.captcha-container { min-height: 65px; width: 100%; }
+.captcha-widget > p { margin: 0; color: #7a8495; font-size: 11px; line-height: 1.5; }
+.captcha-error { margin: 2px 0 17px; padding: 13px; border: 1px solid #fecaca; border-radius: 10px; color: #991b1b; background: #fef2f2; }
+.captcha-error p, .form-error { margin: 0; font-size: 12px; line-height: 1.5; }
+.captcha-error button { margin-top: 8px; padding: 0; border: 0; color: #1d4ed8; background: transparent; font-weight: 700; cursor: pointer; }
+.form-error { margin: 0 0 14px; padding: 11px 13px; border-radius: 9px; color: #991b1b; background: #fef2f2; }
 .submit-button { width: 100%; border: 0; }
+.submit-button:disabled { cursor: not-allowed; transform: none; background: #94a3b8; box-shadow: none; }
 .form-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 14px 0 0; color: #8b94a3; font-size: 11px; }
 .success-state { min-height: 545px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .success-state > span { width: 76px; height: 76px; display: grid; place-items: center; color: var(--blue); background: #edf4ff; border-radius: 50%; }

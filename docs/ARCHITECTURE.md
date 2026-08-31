@@ -4,7 +4,7 @@ Sysvexa empieza como una web estática deliberadamente pequeña. La instancia de
 Lightsail publica únicamente los archivos compilados mediante Caddy; no ejecuta
 una API, una base de datos ni un proceso Node permanente.
 
-## Estado actual
+## Publicación de la web
 
 ```text
 Navegador -> Cloudflare -> Caddy en Lightsail -> release estatica actual
@@ -13,44 +13,49 @@ Navegador -> Cloudflare -> Caddy en Lightsail -> release estatica actual
 - Caddy termina HTTPS en el origen y sirve `/var/www/sysvexa/current`.
 - Cada versión es inmutable y el enlace `current` permite activación y reversión.
 - Nginx puede sustituir a Caddy sirviendo exactamente el mismo enlace.
-- El formulario actual es una demostración de interfaz: todavía no transmite ni
-  persiste datos.
+- El formulario solo confirma el éxito después de que la API haya persistido la
+  solicitud.
 - Stripe está preparado y desactivado; no hay secretos en la web estática.
 
-## Primera ampliación con datos
+## Recepción de solicitudes
 
-Cuando se active la recepción real de solicitudes se añadirá una API pequeña en
-Cloudflare Workers y una base D1 enlazada al Worker:
+La API está implementada como un Cloudflare Worker independiente del servidor
+Linux. Turnstile sigue siendo un widget del navegador; el Worker recibe su token,
+lo valida con Siteverify y solo después escribe en PostgreSQL externo mediante
+Hyperdrive:
 
 ```text
-Web estatica -> Worker API -> D1
-                     |
-                     +-> Stripe Checkout y webhook, cuando se autorice
+Navegador -> widget Turnstile -> token
+    |
+    +-> Worker API -> Siteverify
+             |
+             +-> Hyperdrive -> PostgreSQL externo
+             |
+             +-> Stripe Checkout y webhook, cuando se autorice
 ```
 
-D1 es la opción prevista para solicitudes, estados e identificadores de pago:
-datos relacionales pequeños que no justifican administrar PostgreSQL o MySQL.
-El acceso se hará mediante un binding del Worker, no exponiendo credenciales de
-base de datos al navegador.
+La clave pública de Turnstile puede llegar al navegador. Su secreto queda en el
+entorno del Worker y las credenciales de PostgreSQL quedan en Hyperdrive. El
+navegador no recibe ninguna de esas credenciales privadas.
 
-R2 se añadirá únicamente si las solicitudes admiten fotografías o informes. No
-se deben guardar archivos binarios en D1. KV o Durable Objects tampoco forman
-parte de la primera ampliación; se introducirán solo cuando exista un requisito
-concreto de caché, sesiones o coordinación consistente.
+R2 se añadirá únicamente si las solicitudes admiten fotografías o informes. KV,
+D1 o Durable Objects no forman parte de esta ampliación; se introducirán solo
+cuando exista un requisito concreto que no cubra PostgreSQL.
 
 Referencias de diseño:
 
-- [Opciones de almacenamiento de Workers](https://developers.cloudflare.com/workers/platform/storage-options/)
-- [Bindings del runtime de Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+- [Conectar PostgreSQL mediante Hyperdrive](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/)
+- [Validación de Turnstile en el servidor](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
 
 ## Límites de responsabilidad
 
 - Lightsail no almacena datos de clientes ni claves de Stripe.
-- El Worker valida entrada, consentimiento, límites y autenticación antes de D1.
-- D1 persiste solicitudes y eventos deduplicados; las migraciones se versionan.
+- El Worker valida origen, entrada, consentimiento y Turnstile antes de escribir.
+- PostgreSQL persiste las solicitudes; el esquema se versiona con el Worker.
 - Los secretos de Stripe viven en el entorno del Worker.
 - El webhook verifica la firma sobre el cuerpo original antes de escribir.
-- Caddy y Nginx solo publican la web; cambiar entre ambos no altera la API ni D1.
+- Caddy y Nginx solo publican la web; cambiar entre ambos no altera la API ni la
+  base externa.
 
-Esta separación permite crecer sin rehacer la web, pero evita desplegar hoy una
-infraestructura que todavía no aporta valor.
+El código permanece inactivo hasta sustituir los identificadores de ejemplo,
+crear el secreto y desplegar el Worker según `cloudflare/forms/README.md`.
