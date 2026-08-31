@@ -26,7 +26,8 @@ npm run dev
 
 ## Ejecución en producción
 
-Requiere Node.js 24.15 o posterior dentro de la versión 24 y npm 11. El servidor incluido escucha en todas las
+Requiere Node.js 24.15 o posterior dentro de la versión 24 y npm 12.0.2 o
+posterior dentro de la versión 12. El servidor incluido escucha en todas las
 interfaces para poder ejecutarse detrás de un proxy HTTPS en Linux, Windows o
 macOS:
 
@@ -43,6 +44,12 @@ terminar HTTPS; `npm start` no gestiona certificados.
 La carpeta `deploy/` contiene configuraciones equivalentes para Caddy y Nginx,
 ambas sobre el mismo artefacto y enlace de release. La preparación de Stripe se
 documenta en `docs/STRIPE.md`; permanece desactivada y sin secretos por defecto.
+El actualizador reutiliza y adapta el modelo de releases seguras de Umbravia
+Forge: construcción aislada, activación atómica, salud HTTPS y rollback.
+
+La instancia no requiere base de datos. La futura API de solicitudes se plantea
+como un Cloudflare Worker con D1; la decisión y los límites se documentan en
+`docs/ARCHITECTURE.md`.
 
 Comprobaciones:
 
@@ -50,6 +57,9 @@ Comprobaciones:
 npm test
 npm run typecheck
 npm run build
+npm run portability:clean
+npm run portability:check
+npm run deploy:check
 ```
 
 ## Siguiente etapa

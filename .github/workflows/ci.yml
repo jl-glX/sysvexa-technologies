@@ -39,6 +39,9 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Check operational portability
+        run: npm run portability:check
+
       - name: Run tests
         run: npm test
 
@@ -47,6 +50,17 @@ jobs:
 
       - name: Build the production frontend
         run: npm run build
+
+      - name: Audit deployment assets
+        run: npm run deploy:check
+
+      - name: Validate Linux deployment scripts
+        if: runner.os == 'Linux'
+        run: |
+          bash -n deploy/*.sh
+          for script in deploy/*.sh; do test -x "$script"; done
+          sudo install -m 0755 deploy/auto-update.sh /usr/local/sbin/sysvexa-update
+          systemd-analyze verify deploy/sysvexa-update.service deploy/sysvexa-update.timer
 
       - name: Audit production dependencies
         if: runner.os == 'Linux'

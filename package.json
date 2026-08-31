@@ -14,7 +14,10 @@
     "start": "node server/static-server.mjs",
     "test": "vitest run",
     "typecheck": "tsc -b --pretty false",
-    "check": "npm test && npm run typecheck && npm run build"
+    "portability:clean": "node scripts/remove-windows-operational-files.mjs",
+    "portability:check": "node scripts/check-portability.mjs",
+    "deploy:check": "node scripts/check-deployment-assets.mjs",
+    "check": "npm run portability:clean && npm run portability:check && npm test && npm run typecheck && npm run build && npm run deploy:check"
   },
   "dependencies": {
     "i18next": "26.4.0",
