@@ -12,6 +12,14 @@ migrar en el futuro a PostgreSQL con Hyperdrive sin cambiar el formulario.
 
 ## Preparación
 
+La infraestructura activa utiliza:
+
+- base D1 `sysvexa-service-requests`;
+- widget Turnstile `Sysvexa Technologies` para `sysvexatechnologies.com`;
+- Worker `sysvexa-service-requests` en la ruta `/api/service-requests`.
+
+## Preparar una cuenta nueva
+
 1. Crear la base D1:
 
    ```sh
@@ -25,13 +33,17 @@ migrar en el futuro a PostgreSQL con Hyperdrive sin cambiar el formulario.
    npx wrangler d1 migrations apply sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc
    ```
 
-3. Crear un widget Turnstile para `sysvexatechnologies.com`, sustituir
-   `<TURNSTILE_SITE_KEY>` por su clave pública y guardar el secreto sin
-   escribirlo en el repositorio:
+3. Crear un widget Turnstile para `sysvexatechnologies.com`, copiar su clave
+   pública a `wrangler.jsonc` y guardar el secreto sin escribirlo en el
+   repositorio:
 
    ```sh
    npx wrangler secret put TURNSTILE_SECRET_KEY --config cloudflare/forms/wrangler.jsonc
    ```
+
+   El valor se pega cuando Wrangler lo solicita de forma interactiva. No se
+   añade a la propia línea del comando, a un archivo versionado ni al servidor
+   Linux.
 
 4. Regenerar tipos, validar y desplegar:
 
@@ -46,3 +58,23 @@ navegador solo recibe la clave pública.
 Las cabeceras CSP de Caddy, Nginx y del servidor Node permiten únicamente el
 script y el marco de `https://challenges.cloudflare.com` que necesita el
 widget.
+
+## Gestionar las solicitudes
+
+La forma más sencilla es abrir Cloudflare, entrar en **Almacenamiento y bases
+de datos > D1 Base de datos SQLite > sysvexa-service-requests > Studio** y
+seleccionar la tabla `sysvexa_service_requests`. Cada fila es una solicitud.
+
+Los estados previstos son `new`, `contacted`, `in_progress` y `closed`. También
+se pueden consultar o cambiar desde Wrangler:
+
+```sh
+# Últimas solicitudes
+npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc --command "SELECT id, created_at, name, email, phone, service, status FROM sysvexa_service_requests ORDER BY created_at DESC LIMIT 25"
+
+# Marcar una solicitud como contactada
+npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc --command "UPDATE sysvexa_service_requests SET status = 'contacted' WHERE id = '<REQUEST_ID>'"
+```
+
+No se debe compartir una exportación de esta tabla sin revisar antes los datos
+personales que contiene.

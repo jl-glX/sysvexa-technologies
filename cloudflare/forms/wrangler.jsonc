@@ -16,7 +16,10 @@
   ],
   "vars": {
     "ALLOWED_HOSTNAMES": "sysvexatechnologies.com,www.sysvexatechnologies.com",
-    "TURNSTILE_SITE_KEY": "<TURNSTILE_SITE_KEY>"
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAEjJ3JEov2srqIrR"
+  },
+  "secrets": {
+    "required": ["TURNSTILE_SECRET_KEY"]
   },
   "d1_databases": [
     {
