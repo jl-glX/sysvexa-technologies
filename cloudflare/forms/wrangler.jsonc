@@ -16,12 +16,17 @@
   ],
   "vars": {
     "ALLOWED_HOSTNAMES": "sysvexatechnologies.com,www.sysvexatechnologies.com",
-    "TURNSTILE_SITE_KEY": "<TURNSTILE_SITE_KEY>"
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAEjJ3JEov2srqIrR"
   },
-  "hyperdrive": [
+  "secrets": {
+    "required": ["TURNSTILE_SECRET_KEY"]
+  },
+  "d1_databases": [
     {
-      "binding": "HYPERDRIVE",
-      "id": "<HYPERDRIVE_ID>"
+      "binding": "DB",
+      "database_name": "sysvexa-service-requests",
+      "database_id": "c986c974-2091-4c29-8c69-5fcb85d37fae",
+      "migrations_dir": "migrations"
     }
   ],
   "observability": {

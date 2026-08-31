@@ -49,8 +49,8 @@ Forge: construcción aislada, activación atómica, salud HTTPS y rollback.
 
 La instancia Linux no ejecuta una base de datos ni una API permanente. El
 formulario usa un widget Cloudflare Turnstile y una ruta de Cloudflare Workers;
-el Worker valida el token y guarda la solicitud en PostgreSQL externo mediante
-Hyperdrive. La preparación y los límites se documentan en
+el Worker valida el token y guarda la solicitud en una base Cloudflare D1. La
+preparación y los límites se documentan en
 `cloudflare/forms/README.md` y `docs/ARCHITECTURE.md`.
 
 Comprobaciones:
@@ -67,6 +67,6 @@ npm run deploy:check
 
 ## Siguiente etapa
 
-Activar los recursos de Cloudflare y la base PostgreSQL externa; después se
+Activar el Worker, D1 y Turnstile; después se
 podrá crear el panel privado con el ciclo `Nuevo → En diagnóstico → Presupuesto
 enviado → Aceptado → En reparación → Completado`.
