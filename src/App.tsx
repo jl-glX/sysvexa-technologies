@@ -26,9 +26,7 @@ export default function App() {
     <div className="site-shell">
       <header className="site-header">
         <a className="header-brand" href="#top" aria-label="Sysvexa Technologies">
-          <span className="header-logo-crop">
-            <img src="/brand/identity-visual.png" alt={t("brand.imageAlt")} />
-          </span>
+          <img className="header-mark" src="/brand/sysvexa-mark.png" alt="" />
         </a>
         <nav className={menuOpen ? "nav-links is-open" : "nav-links"} aria-label={t("nav.ariaLabel")}>
           <a href="#services" onClick={closeMenu}>{t("nav.services")}</a>
@@ -63,7 +61,7 @@ export default function App() {
           <div className="hero-visual" aria-label={t("brand.visualLabel")}>
             <div className="signal signal-one" />
             <div className="signal signal-two" />
-            <div className="brand-crop"><img src="/brand/identity-visual.png" alt={t("brand.imageAlt")} /></div>
+            <div className="brand-lockup"><img src="/brand/sysvexa-header.png" alt={t("brand.imageAlt")} /></div>
             <div className="service-status">
               <span className="status-icon"><Check size={18} /></span>
               <span><small>{t("hero.statusLabel")}</small><strong>{t("hero.statusValue")}</strong></span>
@@ -153,7 +151,7 @@ export default function App() {
 
       <footer id="contact">
         <div className="footer-main">
-          <div className="footer-brand"><div className="brand brand-inverted"><span className="brand-mark"><Network size={24} /></span><span><strong>Sysvexa</strong><small>Technologies</small></span></div><p>{t("footer.description")}</p></div>
+          <div className="footer-brand"><img className="footer-mark" src="/brand/sysvexa-mark.png" alt="" /><p>{t("footer.description")}</p></div>
           <div><h3>{t("footer.servicesTitle")}</h3><a href="#services">{t("services.maintenance.title")}</a><a href="#services">{t("services.computers.title")}</a><a href="#services">{t("services.networks.title")}</a><a href="#services">{t("services.security.title")}</a></div>
           <div><h3>{t("footer.contactTitle")}</h3><a href="mailto:hola@sysvexa.tech">hola@sysvexa.tech</a><span>{t("footer.location")}</span><span>{t("footer.schedule")}</span></div>
         </div>
