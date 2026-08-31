@@ -2,6 +2,22 @@
 	root * /var/www/sysvexa/current
 	encode zstd gzip
 
+	# Perfil de perímetro heredado de Umbravia Forge y reducido a las superficies
+	# reales de Sysvexa: sitio estático y un único formulario público.
+	@automated_probes {
+		path /.env* /.git* /.hg* /.svn* /.aws* /.ssh* /.npmrc /.yarnrc /.htaccess /.htpasswd /.DS_Store /config.json /package*.json /pnpm-lock.yaml /yarn.lock /composer*.json /docker-compose* /Dockerfile /Caddyfile /nginx.conf /web.config /appsettings.json /id_rsa /id_ed25519 /wp-login.php* /wp-admin* /wp-content* /wp-includes* /xmlrpc.php* /phpmyadmin* /phpMyAdmin* /adminer* /vendor/phpunit* /cgi-bin* /server-status* /actuator* *.php* *.phtml* *.phar* *.asp* *.aspx* *.jsp* *.cgi* *.pem* *.key* *.p12* *.pfx* *.sql* *.sqlite* *.db* *.bak* *.backup* *.old* *.orig* *.save* *.swp* *~
+	}
+	respond @automated_probes 404
+
+	@dangerous_methods method CONNECT TRACE TRACK
+	respond @dangerous_methods 405
+
+	# Caddy 2.10 o posterior. El Worker conserva el límite autoritativo de 16 KiB
+	# para el formulario; este límite exterior corta cargas abusivas antes.
+	request_body {
+		max_size 1MB
+	}
+
 	header {
 		-Server
 		Cache-Control "no-cache"
@@ -13,15 +29,21 @@
 		X-Frame-Options "DENY"
 	}
 
+	log {
+		output file {$SYSVEXA_CADDY_LOG:/var/log/caddy/sysvexa-technologies-access.log} {
+			roll_size 25MiB
+			roll_keep 10
+			roll_keep_for 720h
+		}
+		format json
+	}
+
 	@versioned_assets path /assets/*
 	header @versioned_assets Cache-Control "public, max-age=31536000, immutable"
 
 	# route conserva este orden: las rutas sensibles y los métodos no seguros se
 	# rechazan antes de que el fallback SPA reescriba la petición a index.html.
 	route {
-		@private_files path /.env* /.git* /.ssh* /package*.json /Caddyfile /nginx.conf
-		respond @private_files 404
-
 		# La web puede permanecer en Solo DNS. Solo el formulario cruza el dominio
 		# dedicado cuyo origen es el Worker de Cloudflare.
 		@service_requests path /api/service-requests /api/service-requests/*

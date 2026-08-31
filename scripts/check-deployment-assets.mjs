@@ -81,6 +81,30 @@ if (!caddy.includes(formsUpstream) || !nginx.includes(formsUpstream)) {
   throw new Error("Caddy y Nginx deben dirigir el formulario al Worker dedicado");
 }
 
+const perimeterMarkers = [
+  ["@automated_probes", "Perfil de sondas"],
+  ["@dangerous_methods", "Bloqueo de metodos peligrosos"],
+  ["request_body", "Limite exterior de cuerpo"],
+  ["wp-login", "Sondas de CMS"],
+  ["phpmyadmin", "Sondas de paneles"],
+  ["server-status", "Sondas de servidor"],
+];
+for (const [marker, label] of perimeterMarkers) {
+  const nginxMarker = marker
+    .replace("@automated_probes", "Perfil de sondas heredado")
+    .replace("@dangerous_methods", "CONNECT|TRACE|TRACK")
+    .replace("request_body", "client_max_body_size");
+  if (!caddy.includes(marker) || !nginx.includes(nginxMarker)) {
+    throw new Error(`${label} incompleto entre Caddy y Nginx`);
+  }
+}
+
+for (const sensitiveSuffix of ["*.pem", "*.key", "*.sql", "*.backup"]) {
+  if (!caddy.includes(sensitiveSuffix)) {
+    throw new Error(`Caddy no bloquea el sufijo sensible ${sensitiveSuffix}`);
+  }
+}
+
 console.log(
   `Recursos de despliegue validados (${deploymentFiles.length} operativos y ${distFiles.length} publicos).`,
 );
