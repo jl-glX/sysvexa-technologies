@@ -21,7 +21,8 @@ describe("Turnstile verification", () => {
       }),
     ).resolves.toEqual({ success: true, reason: "verified" });
 
-    const verificationBody = fetcher.mock.calls[0]?.[1]?.body as FormData;
+    const verificationBody = fetcher.mock.calls[0]?.[1]
+      ?.body as URLSearchParams;
     expect(verificationBody.get("response")).toBe("token");
     expect(verificationBody.has("remoteip")).toBe(false);
   });
@@ -77,6 +78,51 @@ describe("Turnstile verification", () => {
     ).resolves.toMatchObject({
       success: false,
       reason: "provider_unavailable",
+      detail: "Error: offline",
+    });
+  });
+
+  it("records provider error codes without exposing credentials", async () => {
+    const fetcher = vi.fn().mockResolvedValue(
+      Response.json({
+        success: false,
+        "error-codes": ["invalid-input-response"],
+      }),
+    );
+
+    await expect(
+      verifyTurnstile({
+        token: "invalid-token",
+        secret: "secret",
+        allowedHostnames,
+        fetcher,
+      }),
+    ).resolves.toEqual({
+      success: false,
+      reason: "provider_rejected",
+      detail: "invalid-input-response",
+    });
+  });
+
+  it("records safe error codes returned with a non-success HTTP status", async () => {
+    const fetcher = vi.fn().mockResolvedValue(
+      Response.json(
+        { success: false, "error-codes": ["invalid-input-secret"] },
+        { status: 400 },
+      ),
+    );
+
+    await expect(
+      verifyTurnstile({
+        token: "invalid-token",
+        secret: "secret",
+        allowedHostnames,
+        fetcher,
+      }),
+    ).resolves.toEqual({
+      success: false,
+      reason: "provider_unavailable",
+      detail: "siteverify_http_400:invalid-input-secret",
     });
   });
 });
