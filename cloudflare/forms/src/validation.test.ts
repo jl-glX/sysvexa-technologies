@@ -40,6 +40,25 @@ describe("service request validation", () => {
     ).toThrow(ServiceRequestValidationError);
   });
 
+  it("accepts only the three catalogued consulting durations", () => {
+    expect(parseServiceRequest({
+      ...validRequest,
+      service: "consulting",
+      productOption: "consulting_60",
+    })).toMatchObject({
+      service: "consulting",
+      productOption: "consulting_60",
+    });
+    expect(() => parseServiceRequest({
+      ...validRequest,
+      service: "consulting",
+    })).toThrow(ServiceRequestValidationError);
+    expect(() => parseServiceRequest({
+      ...validRequest,
+      productOption: "consulting_60",
+    })).toThrow(ServiceRequestValidationError);
+  });
+
   it("requires explicit consent and a captcha token", () => {
     expect(() =>
       parseServiceRequest({ ...validRequest, consent: false }),

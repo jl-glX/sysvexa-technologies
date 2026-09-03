@@ -3,15 +3,25 @@ export const serviceKeys = [
   "computers",
   "networks",
   "security",
+  "consulting",
 ] as const;
 
 export type ServiceKey = (typeof serviceKeys)[number];
+
+export const consultingOptionKeys = [
+  "consulting_30",
+  "consulting_60",
+  "consulting_90",
+] as const;
+
+export type ConsultingOptionKey = (typeof consultingOptionKeys)[number];
 
 export interface ServiceRequestInput {
   name: string;
   email: string;
   phone: string | null;
   service: ServiceKey;
+  productOption: ConsultingOptionKey | null;
   details: string;
   locale: string;
   consent: true;
@@ -27,6 +37,7 @@ const allowedFields = new Set([
   "email",
   "phone",
   "service",
+  "productOption",
   "details",
   "locale",
   "consent",
@@ -78,6 +89,17 @@ export function parseServiceRequest(value: unknown): ServiceRequestInput {
   if (!serviceKeys.includes(service as ServiceKey)) {
     throw new ServiceRequestValidationError("service is invalid");
   }
+  const productOptionValue = typeof body.productOption === "string"
+    ? body.productOption.trim()
+    : "";
+  const productOption = productOptionValue || null;
+  if (service === "consulting") {
+    if (!productOption || !consultingOptionKeys.includes(productOption as ConsultingOptionKey)) {
+      throw new ServiceRequestValidationError("productOption is invalid");
+    }
+  } else if (productOption) {
+    throw new ServiceRequestValidationError("productOption is only valid for consulting");
+  }
   const details = requiredString(body.details, "details", 10, 4000);
   const locale = requiredString(body.locale, "locale", 2, 20);
   const captchaToken = requiredString(
@@ -95,6 +117,7 @@ export function parseServiceRequest(value: unknown): ServiceRequestInput {
     email,
     phone: phoneValue || null,
     service: service as ServiceKey,
+    productOption: productOption as ConsultingOptionKey | null,
     details,
     locale,
     consent: true,

@@ -15,6 +15,7 @@ function notificationEnv(send = vi.fn().mockResolvedValue({})) {
 const notification = {
   requestId: "00000000-0000-4000-8000-000000000001",
   service: "maintenance",
+  productOption: null,
   createdAt: "2026-09-01T00:00:00.000Z",
 };
 
@@ -30,6 +31,15 @@ describe("service request notifications", () => {
     expect(serialized).not.toContain("phone");
     expect(serialized).not.toContain("details");
     expect(serialized).not.toContain("captchaToken");
+  });
+
+  it("includes a consulting duration without copying customer data", () => {
+    const message = buildServiceRequestNotification(notificationEnv(), {
+      ...notification,
+      service: "consulting",
+      productOption: "consulting_90",
+    });
+    expect(message.text).toContain("Modalidad: consulting_90");
   });
 
   it("uses the restricted Cloudflare email binding", async () => {

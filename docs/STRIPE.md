@@ -1,11 +1,45 @@
 # Preparación de Stripe
 
-Estado: **preparado y desactivado**. La web no cobra ni envía el formulario a
-Stripe en esta fase.
+Estado: **Payment Links activos; Checkout propio preparado y desactivado**.
+La web ofrece pagos directos alojados por Stripe, pero el formulario de
+solicitud sigue siendo independiente y no cobra al enviarse.
+
+## Catálogo público y pagos directos
+
+La página publica únicamente enlaces de pago de Stripe. No contiene claves de
+API ni permite que el navegador elija un `price_...` o un importe arbitrario.
+
+| Producto | Precio | Payment Link |
+| --- | ---: | --- |
+| Diagnóstico y mantenimiento informático | 40 € | `https://buy.stripe.com/dRm8wH8lDf0KfxG8OO97G07` |
+| Montaje completo y puesta en marcha de PC | 160 € | `https://buy.stripe.com/7sYcMXcBT5qa99i8OO97G04` |
+| Mantenimiento y configuración de redes | 70 € | `https://buy.stripe.com/bJefZ96dv3i21GQaWW97G05` |
+| Seguridad y protección de datos | 80 € | `https://buy.stripe.com/28E00b0Tb2dYetCc1097G06` |
+| Consultoría informática y tecnológica, 30 min | 22 € | `https://book.stripe.com/6oU3cn6dv9Gq5X6aWW97G08` |
+| Consultoría informática y tecnológica, 60 min | 43 € | `https://book.stripe.com/aFa9AL6dv05Q5X6aWW97G0a` |
+| Consultoría informática y tecnológica, 90 min | 66 € | `https://book.stripe.com/28EdR131j7yigBK8OO97G09` |
+
+Cada tarjeta abre un cajón con el enlace y un QR. El QR se genera localmente en
+el navegador a partir del mismo enlace, por lo que no depende de un servicio
+externo ni puede quedar desactualizado respecto al botón.
+
+El precio libre de consultoría y el antiguo enlace que cobraba 60 minutos con
+un selector meramente informativo no se publican. Las tres duraciones usan
+Payment Links distintos para que el importe cobrado coincida con la opción.
+
+### Fiscalidad pendiente
+
+El 3 de septiembre de 2026 Stripe no devolvió registros activos de Stripe Tax
+para esta cuenta. Por ese motivo, los nuevos enlaces de consultoría no activan
+el cálculo automático de impuestos. Los enlaces antiguos de los otros cuatro
+productos ya tenían `automatic_tax` activado en Stripe, pero esa opción no
+recauda impuestos por sí sola si no existe un registro fiscal activo. Esta
+configuración debe revisarse antes de considerar cerrada la parte fiscal.
 
 Se ha adaptado la frontera de configuración de Umbravia Forge al caso de
-Sysvexa. Aquí no hay suscripciones SaaS: el diseño previsto usa Checkout alojado
-por Stripe y pagos puntuales de servicios.
+Sysvexa. Aquí no hay suscripciones SaaS: los pagos actuales son puntuales y usan
+Payment Links. La base opcional de Checkout queda reservada para una futura
+integración dinámica desde el servidor.
 
 ## Controles ya implementados
 

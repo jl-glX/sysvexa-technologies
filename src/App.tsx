@@ -1,16 +1,20 @@
 import { useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, Check, ChevronDown, CircleCheck, Clock3, HardDrive, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
+import { ArrowRight, Check, CircleCheck, Clock3, HardDrive, Lightbulb, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
 import { CaptchaWidget } from "./components/CaptchaWidget";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { PaymentDrawer } from "./components/PaymentDrawer";
+import { ProductSelector } from "./components/ProductSelector";
+import { products, type ProductKey } from "./lib/products";
 import { submitServiceRequest } from "./lib/service-requests";
 
-const services = [
-  { key: "maintenance", icon: Wrench },
-  { key: "computers", icon: HardDrive },
-  { key: "networks", icon: Network },
-  { key: "security", icon: ShieldCheck },
-] as const;
+const productIcons = {
+  maintenance: Wrench,
+  computers: HardDrive,
+  networks: Network,
+  security: ShieldCheck,
+  consulting: Lightbulb,
+} as const;
 
 export default function App() {
   const { t, i18n } = useTranslation();
@@ -18,6 +22,9 @@ export default function App() {
   const [requestStatus, setRequestStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [captchaToken, setCaptchaToken] = useState("");
   const [captchaResetSignal, setCaptchaResetSignal] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState<ProductKey | "">("");
+  const [selectedOption, setSelectedOption] = useState("");
+  const [openPaymentProduct, setOpenPaymentProduct] = useState<ProductKey | null>(null);
 
   async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,6 +38,7 @@ export default function App() {
         email: String(data.get("email") ?? ""),
         phone: String(data.get("phone") ?? ""),
         service: String(data.get("service") ?? ""),
+        productOption: String(data.get("productOption") ?? "") || undefined,
         details: String(data.get("details") ?? ""),
         locale: i18n.resolvedLanguage ?? i18n.language,
         consent: data.get("consent") === "on",
@@ -38,6 +46,8 @@ export default function App() {
         website: String(data.get("website") ?? ""),
       });
       form.reset();
+      setSelectedProduct("");
+      setSelectedOption("");
       setRequestStatus("sent");
     } catch {
       setRequestStatus("error");
@@ -113,14 +123,23 @@ export default function App() {
             <p>{t("services.description")}</p>
           </div>
           <div className="service-grid">
-            {services.map(({ key, icon: Icon }, index) => (
-              <article className="service-card" key={key}>
-                <div className="card-top"><span className="service-icon"><Icon /></span><span className="service-number">0{index + 1}</span></div>
-                <h3>{t(`services.${key}.title`)}</h3>
-                <p>{t(`services.${key}.description`)}</p>
-                <a href="#request">{t("services.learnMore")} <ArrowRight size={16} /></a>
-              </article>
-            ))}
+            {products.map((product, index) => {
+              const Icon = productIcons[product.key];
+              return (
+                <article className="service-card" key={product.key}>
+                  <div className="card-top"><span className="service-icon"><Icon /></span><span className="service-number">0{index + 1}</span></div>
+                  <h3>{t(`services.${product.key}.title`)}</h3>
+                  <p>{t(`services.${product.key}.description`)}</p>
+                  <PaymentDrawer
+                    locale={i18n.resolvedLanguage ?? i18n.language}
+                    open={openPaymentProduct === product.key}
+                    options={product.paymentOptions}
+                    onToggle={() => setOpenPaymentProduct((current) => current === product.key ? null : product.key)}
+                    t={t}
+                  />
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -169,7 +188,14 @@ export default function App() {
                   <label>{t("request.email")}<input name="email" type="email" required autoComplete="email" placeholder={t("request.emailPlaceholder")} /></label>
                   <label>{t("request.phone")}<input name="phone" type="tel" autoComplete="tel" placeholder={t("request.phonePlaceholder")} /></label>
                 </div>
-                <label>{t("request.service")}<span className="select-wrap"><select name="service" required defaultValue=""><option value="" disabled>{t("request.servicePlaceholder")}</option>{services.map(({ key }) => <option key={key} value={key}>{t(`services.${key}.title`)}</option>)}</select><ChevronDown size={18} /></span></label>
+                <ProductSelector
+                  locale={i18n.resolvedLanguage ?? i18n.language}
+                  selectedProduct={selectedProduct}
+                  selectedOption={selectedOption}
+                  setSelectedProduct={setSelectedProduct}
+                  setSelectedOption={setSelectedOption}
+                  t={t}
+                />
                 <label>{t("request.details")}<textarea name="details" required rows={4} placeholder={t("request.detailsPlaceholder")} /></label>
                 <label className="check-label"><input name="consent" type="checkbox" required /><span>{t("request.consent")}</span></label>
                 <CaptchaWidget onToken={setCaptchaToken} resetSignal={captchaResetSignal} />
@@ -185,7 +211,7 @@ export default function App() {
       <footer id="contact">
         <div className="footer-main">
           <div className="footer-brand"><img className="footer-mark" src="/brand/sysvexa-mark.png" alt="" /><p>{t("footer.description")}</p></div>
-          <div><h3>{t("footer.servicesTitle")}</h3><a href="#services">{t("services.maintenance.title")}</a><a href="#services">{t("services.computers.title")}</a><a href="#services">{t("services.networks.title")}</a><a href="#services">{t("services.security.title")}</a></div>
+          <div><h3>{t("footer.servicesTitle")}</h3><a href="#services">{t("services.maintenance.title")}</a><a href="#services">{t("services.computers.title")}</a><a href="#services">{t("services.networks.title")}</a><a href="#services">{t("services.security.title")}</a><a href="#services">{t("services.consulting.title")}</a></div>
           <div><h3>{t("footer.contactTitle")}</h3><a href="mailto:u3849730636@gmail.com">u3849730636@gmail.com</a><span>{t("footer.location")}</span><span>{t("footer.schedule")}</span></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Sysvexa Technologies</span><span>{t("footer.legal")}</span></div>

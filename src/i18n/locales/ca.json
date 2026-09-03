@@ -1,12 +1,136 @@
 {
-  "languages": { "label": "Idioma", "es": "Castellà", "gl": "Gallec", "ca": "Català", "ocAranes": "Aranès", "valencia": "Valencià", "fr": "Francès", "enUS": "Anglès (EUA)", "de": "Alemany", "it": "Italià" },
-  "nav": { "ariaLabel": "Navegació principal", "services": "Serveis", "howItWorks": "Com funciona", "request": "Sol·licitar servei", "contact": "Contacte", "cta": "Demanar ajuda", "menu": "Obrir el menú" },
-  "brand": { "visualLabel": "Identitat visual de Sysvexa Technologies", "imageAlt": "Logotip de Sysvexa Technologies" },
-  "hero": { "eyebrow": "Suport informàtic clar i proper", "titleStart": "Tecnologia que funciona.", "titleAccent": "Sense complicacions.", "description": "Resolc problemes informàtics, milloro els teus equips i protegeixo la teva xarxa amb solucions pràctiques per a particulars i petits negocis.", "primaryCta": "Sol·licitar servei", "secondaryCta": "Veure serveis", "proof1": "Diagnòstic explicat amb claredat", "proof2": "Resposta inicial en 24 hores laborables", "statusLabel": "La teva sol·licitud", "statusValue": "En bones mans" },
-  "trust": { "ariaLabel": "Àrees d'especialització", "intro": "Tecnologia ben resolta per a", "item1": "Equips", "item2": "Xarxes", "item3": "Seguretat" },
-  "services": { "kicker": "Què faig", "title": "Solucions informàtiques que pots entendre", "description": "Serveis concrets, abast clar i recomanacions honestes. Començo pel que realment necessites.", "learnMore": "Sol·licitar aquest servei", "maintenance": { "title": "Manteniment i reparació", "description": "Diagnòstic, posada a punt, neteja i solució d'avaries en ordinadors i perifèrics." }, "computers": { "title": "Muntatge i millora d'equips", "description": "Configuracions equilibrades, ampliacions i muntatge de PC adaptats al teu ús i pressupost." }, "networks": { "title": "Xarxes domèstiques i professionals", "description": "Wi-Fi estable, cablejat, encaminadors i connectivitat per a llars, despatxos i petits negocis." }, "security": { "title": "Seguretat i protecció de dades", "description": "Còpies de seguretat, MFA, xifratge i configuració segura per reduir riscos quotidians." } },
-  "process": { "kicker": "Com funciona", "title": "Del teu problema a una solució clara", "description": "Un procés senzill, amb informació suficient perquè mantinguis el control.", "request": { "title": "Explica'm què passa", "description": "Tria el servei i descriu l'equip, el problema o la millora que necessites." }, "diagnosis": { "title": "Reviso i proposo", "description": "Valoro el cas i t'explico les opcions, l'abast i el cost abans d'intervenir." }, "solution": { "title": "Resolc i documento", "description": "Faig la feina i et deixo un resum clar del que he fet i de les recomanacions." } },
-  "request": { "kicker": "Per començar", "title": "Explica'm què necessites", "description": "Completa el formulari amb la informació que tinguis. No cal conèixer termes tècnics.", "benefit1": "Sense compromís i sense costos ocults", "benefit2": "Les teves dades només s'utilitzen per gestionar la sol·licitud", "benefit3": "Et confirmaré el pas següent abans d'actuar", "formTitle": "Nova sol·licitud", "required": "* Camps obligatoris", "name": "Nom *", "namePlaceholder": "Com et dius?", "email": "Correu electrònic *", "emailPlaceholder": "tu@correu.cat", "phone": "Telèfon", "phonePlaceholder": "+34 600 000 000", "service": "Servei *", "servicePlaceholder": "Selecciona una opció", "details": "Què necessites? *", "detailsPlaceholder": "Descriu el problema, l'equip i qualsevol detall que em pugui ajudar...", "consent": "He llegit i accepto el tractament de les meves dades per gestionar aquesta sol·licitud.", "submit": "Enviar sol·licitud", "sending": "Enviant...", "error": "No s'ha pogut enviar la sol·licitud. Comprova la verificació i torna-ho a provar.", "privacyNote": "La informació només s'utilitza per preparar la teva sol·licitud.", "successTitle": "Sol·licitud rebuda", "successDescription": "He rebut la teva sol·licitud. Revisaré la informació i et confirmaré el pas següent.", "newRequest": "Crear una altra sol·licitud" },
-  "captcha": { "label": "Verificació de seguretat", "help": "Cloudflare Turnstile comprova que la sol·licitud prové d'una persona.", "error": "No s'ha pogut carregar la verificació de seguretat.", "retry": "Torna-ho a provar" },
-  "footer": { "description": "Sistemes informàtics, xarxes i seguretat amb un tracte clar, responsable i proper.", "servicesTitle": "Serveis", "contactTitle": "Contacte", "location": "Jaén · Servei remot i presencial segons la zona", "schedule": "De dilluns a divendres · 09:00–18:00", "legal": "Privacitat · Avís legal" }
+  "languages": {
+    "label": "Idioma",
+    "es": "Castellà",
+    "gl": "Gallec",
+    "ca": "Català",
+    "ocAranes": "Aranès",
+    "valencia": "Valencià",
+    "fr": "Francès",
+    "enUS": "Anglès (EUA)",
+    "de": "Alemany",
+    "it": "Italià"
+  },
+  "nav": {
+    "ariaLabel": "Navegació principal",
+    "services": "Serveis",
+    "howItWorks": "Com funciona",
+    "request": "Sol·licitar servei",
+    "contact": "Contacte",
+    "cta": "Demanar ajuda",
+    "menu": "Obrir el menú"
+  },
+  "brand": {
+    "visualLabel": "Identitat visual de Sysvexa Technologies",
+    "imageAlt": "Logotip de Sysvexa Technologies"
+  },
+  "hero": {
+    "eyebrow": "Suport informàtic clar i proper",
+    "titleStart": "Tecnologia que funciona.",
+    "titleAccent": "Sense complicacions.",
+    "description": "Resolc problemes informàtics, milloro els teus equips i protegeixo la teva xarxa amb solucions pràctiques per a particulars i petits negocis.",
+    "primaryCta": "Sol·licitar servei",
+    "secondaryCta": "Veure serveis",
+    "proof1": "Diagnòstic explicat amb claredat",
+    "proof2": "Resposta inicial en 24 hores laborables",
+    "statusLabel": "La teva sol·licitud",
+    "statusValue": "En bones mans"
+  },
+  "trust": {
+    "ariaLabel": "Àrees d'especialització",
+    "intro": "Tecnologia ben resolta per a",
+    "item1": "Equips",
+    "item2": "Xarxes",
+    "item3": "Seguretat"
+  },
+  "services": {
+    "kicker": "Què faig",
+    "title": "Solucions informàtiques que pots entendre",
+    "description": "Serveis concrets, abast clar i recomanacions honestes. Començo pel que realment necessites.",
+    "learnMore": "Pagar directament",
+    "maintenance": {
+      "title": "Manteniment i reparació",
+      "description": "Diagnòstic, posada a punt, neteja i solució d'avaries en ordinadors i perifèrics."
+    },
+    "computers": {
+      "title": "Muntatge i millora d'equips",
+      "description": "Configuracions equilibrades, ampliacions i muntatge de PC adaptats al teu ús i pressupost."
+    },
+    "networks": {
+      "title": "Xarxes domèstiques i professionals",
+      "description": "Wi-Fi estable, cablejat, encaminadors i connectivitat per a llars, despatxos i petits negocis."
+    },
+    "security": {
+      "title": "Seguretat i protecció de dades",
+      "description": "Còpies de seguretat, MFA, xifratge i configuració segura per reduir riscos quotidians."
+    },
+    "openPayment": "Obrir pagament segur",
+    "qrHelp": "No pots obrir l’enllaç? Escaneja el QR.",
+    "qrAlt": "Codi QR per obrir el pagament segur a Stripe",
+    "stripeNote": "Pagament allotjat de manera segura per Stripe",
+    "consulting": {
+      "title": "Consultoria informàtica i tecnològica",
+      "description": "Assessorament personalitzat sobre equips, components, xarxes, sistemes i seguretat bàsica."
+    }
+  },
+  "process": {
+    "kicker": "Com funciona",
+    "title": "Del teu problema a una solució clara",
+    "description": "Un procés senzill, amb informació suficient perquè mantinguis el control.",
+    "request": {
+      "title": "Explica'm què passa",
+      "description": "Tria el servei i descriu l'equip, el problema o la millora que necessites."
+    },
+    "diagnosis": {
+      "title": "Reviso i proposo",
+      "description": "Valoro el cas i t'explico les opcions, l'abast i el cost abans d'intervenir."
+    },
+    "solution": {
+      "title": "Resolc i documento",
+      "description": "Faig la feina i et deixo un resum clar del que he fet i de les recomanacions."
+    }
+  },
+  "request": {
+    "kicker": "Per començar",
+    "title": "Explica'm què necessites",
+    "description": "Completa el formulari amb la informació que tinguis. No cal conèixer termes tècnics.",
+    "benefit1": "Sense compromís i sense costos ocults",
+    "benefit2": "Les teves dades només s'utilitzen per gestionar la sol·licitud",
+    "benefit3": "Et confirmaré el pas següent abans d'actuar",
+    "formTitle": "Nova sol·licitud",
+    "required": "* Camps obligatoris",
+    "name": "Nom *",
+    "namePlaceholder": "Com et dius?",
+    "email": "Correu electrònic *",
+    "emailPlaceholder": "tu@correu.cat",
+    "phone": "Telèfon",
+    "phonePlaceholder": "+34 600 000 000",
+    "service": "Producte *",
+    "servicePlaceholder": "Selecciona una opció",
+    "details": "Què necessites? *",
+    "detailsPlaceholder": "Descriu el problema, l'equip i qualsevol detall que em pugui ajudar...",
+    "consent": "He llegit i accepto el tractament de les meves dades per gestionar aquesta sol·licitud.",
+    "submit": "Enviar sol·licitud",
+    "sending": "Enviant...",
+    "error": "No s'ha pogut enviar la sol·licitud. Comprova la verificació i torna-ho a provar.",
+    "privacyNote": "La informació només s'utilitza per preparar la teva sol·licitud.",
+    "successTitle": "Sol·licitud rebuda",
+    "successDescription": "He rebut la teva sol·licitud. Revisaré la informació i et confirmaré el pas següent.",
+    "newRequest": "Crear una altra sol·licitud",
+    "consultingDuration": "Durada de la consultoria *"
+  },
+  "captcha": {
+    "label": "Verificació de seguretat",
+    "help": "Cloudflare Turnstile comprova que la sol·licitud prové d'una persona.",
+    "error": "No s'ha pogut carregar la verificació de seguretat.",
+    "retry": "Torna-ho a provar"
+  },
+  "footer": {
+    "description": "Sistemes informàtics, xarxes i seguretat amb un tracte clar, responsable i proper.",
+    "servicesTitle": "Serveis",
+    "contactTitle": "Contacte",
+    "location": "Jaén · Servei remot i presencial segons la zona",
+    "schedule": "De dilluns a divendres · 09:00–18:00",
+    "legal": "Privacitat · Avís legal"
+  }
 }

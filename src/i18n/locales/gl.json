@@ -1,12 +1,136 @@
 {
-  "languages": { "label": "Idioma", "es": "Castelán", "gl": "Galego", "ca": "Catalán", "ocAranes": "Aranés", "valencia": "Valenciano", "fr": "Francés", "enUS": "Inglés (EUA)", "de": "Alemán", "it": "Italiano" },
-  "nav": { "ariaLabel": "Navegación principal", "services": "Servizos", "howItWorks": "Como funciona", "request": "Solicitar servizo", "contact": "Contacto", "cta": "Pedir axuda", "menu": "Abrir menú" },
-  "brand": { "visualLabel": "Identidade visual de Sysvexa Technologies", "imageAlt": "Logotipo de Sysvexa Technologies" },
-  "hero": { "eyebrow": "Soporte informático claro e próximo", "titleStart": "Tecnoloxía que funciona.", "titleAccent": "Sen complicacións.", "description": "Resolvo problemas informáticos, melloro os teus equipos e protexo a túa rede con solucións prácticas para particulares e pequenos negocios.", "primaryCta": "Solicitar servizo", "secondaryCta": "Ver servizos", "proof1": "Diagnóstico explicado con claridade", "proof2": "Resposta inicial en 24 horas laborables", "statusLabel": "A túa solicitude", "statusValue": "En boas mans" },
-  "trust": { "ariaLabel": "Áreas de especialización", "intro": "Tecnoloxía ben resolta para", "item1": "Equipos", "item2": "Redes", "item3": "Seguridade" },
-  "services": { "kicker": "Que fago", "title": "Solucións informáticas que podes entender", "description": "Servizos concretos, alcance claro e recomendacións honestas. Comezo polo que realmente necesitas.", "learnMore": "Solicitar este servizo", "maintenance": { "title": "Mantemento e reparación", "description": "Diagnóstico, posta a punto, limpeza e solución de avarías en ordenadores e periféricos." }, "computers": { "title": "Montaxe e mellora de equipos", "description": "Configuracións equilibradas, ampliacións e montaxe de PC adaptados ao teu uso e orzamento." }, "networks": { "title": "Redes domésticas e profesionais", "description": "Wi-Fi estable, cableado, routers e conectividade para fogares, despachos e pequenos negocios." }, "security": { "title": "Seguridade e protección de datos", "description": "Copias de seguridade, MFA, cifrado e configuración segura para reducir riscos cotiáns." } },
-  "process": { "kicker": "Como funciona", "title": "Do teu problema a unha solución clara", "description": "Un proceso sinxelo, con información suficiente para que manteñas o control.", "request": { "title": "Cóntame que ocorre", "description": "Elixe o servizo e describe o equipo, o problema ou a mellora que necesitas." }, "diagnosis": { "title": "Reviso e propoño", "description": "Valoro o caso e explícoche opcións, alcance e custo antes de intervir." }, "solution": { "title": "Resolvo e documento", "description": "Realizo o traballo e déixoche un resumo claro do feito e das recomendacións." } },
-  "request": { "kicker": "Para comezar", "title": "Cóntame que necesitas", "description": "Completa o formulario coa información que teñas. Non cómpre coñecer termos técnicos.", "benefit1": "Sen compromiso e sen custos ocultos", "benefit2": "Os teus datos úsanse só para xestionar a solicitude", "benefit3": "Confirmareiche o seguinte paso antes de actuar", "formTitle": "Nova solicitude", "required": "* Campos obrigatorios", "name": "Nome *", "namePlaceholder": "Como te chamas?", "email": "Correo electrónico *", "emailPlaceholder": "ti@correo.gal", "phone": "Teléfono", "phonePlaceholder": "+34 600 000 000", "service": "Servizo *", "servicePlaceholder": "Selecciona unha opción", "details": "Que necesitas? *", "detailsPlaceholder": "Describe o problema, o equipo e calquera detalle que poida axudarme...", "consent": "Lin e acepto o tratamento dos meus datos para xestionar esta solicitude.", "submit": "Enviar solicitude", "sending": "Enviando...", "error": "Non se puido enviar a solicitude. Comproba a verificación e téntao de novo.", "privacyNote": "A información úsase unicamente para preparar a túa solicitude.", "successTitle": "Solicitude recibida", "successDescription": "Recibín a túa solicitude. Revisarei a información e confirmareiche o seguinte paso.", "newRequest": "Crear outra solicitude" },
-  "captcha": { "label": "Verificación de seguridade", "help": "Cloudflare Turnstile comproba que a solicitude procede dunha persoa.", "error": "Non se puido cargar a verificación de seguridade.", "retry": "Tentar de novo" },
-  "footer": { "description": "Sistemas informáticos, redes e seguridade cun trato claro, responsable e próximo.", "servicesTitle": "Servizos", "contactTitle": "Contacto", "location": "Jaén · Servizo remoto e presencial segundo a zona", "schedule": "Luns a venres · 09:00–18:00", "legal": "Privacidade · Aviso legal" }
+  "languages": {
+    "label": "Idioma",
+    "es": "Castelán",
+    "gl": "Galego",
+    "ca": "Catalán",
+    "ocAranes": "Aranés",
+    "valencia": "Valenciano",
+    "fr": "Francés",
+    "enUS": "Inglés (EUA)",
+    "de": "Alemán",
+    "it": "Italiano"
+  },
+  "nav": {
+    "ariaLabel": "Navegación principal",
+    "services": "Servizos",
+    "howItWorks": "Como funciona",
+    "request": "Solicitar servizo",
+    "contact": "Contacto",
+    "cta": "Pedir axuda",
+    "menu": "Abrir menú"
+  },
+  "brand": {
+    "visualLabel": "Identidade visual de Sysvexa Technologies",
+    "imageAlt": "Logotipo de Sysvexa Technologies"
+  },
+  "hero": {
+    "eyebrow": "Soporte informático claro e próximo",
+    "titleStart": "Tecnoloxía que funciona.",
+    "titleAccent": "Sen complicacións.",
+    "description": "Resolvo problemas informáticos, melloro os teus equipos e protexo a túa rede con solucións prácticas para particulares e pequenos negocios.",
+    "primaryCta": "Solicitar servizo",
+    "secondaryCta": "Ver servizos",
+    "proof1": "Diagnóstico explicado con claridade",
+    "proof2": "Resposta inicial en 24 horas laborables",
+    "statusLabel": "A túa solicitude",
+    "statusValue": "En boas mans"
+  },
+  "trust": {
+    "ariaLabel": "Áreas de especialización",
+    "intro": "Tecnoloxía ben resolta para",
+    "item1": "Equipos",
+    "item2": "Redes",
+    "item3": "Seguridade"
+  },
+  "services": {
+    "kicker": "Que fago",
+    "title": "Solucións informáticas que podes entender",
+    "description": "Servizos concretos, alcance claro e recomendacións honestas. Comezo polo que realmente necesitas.",
+    "learnMore": "Pagar directamente",
+    "maintenance": {
+      "title": "Mantemento e reparación",
+      "description": "Diagnóstico, posta a punto, limpeza e solución de avarías en ordenadores e periféricos."
+    },
+    "computers": {
+      "title": "Montaxe e mellora de equipos",
+      "description": "Configuracións equilibradas, ampliacións e montaxe de PC adaptados ao teu uso e orzamento."
+    },
+    "networks": {
+      "title": "Redes domésticas e profesionais",
+      "description": "Wi-Fi estable, cableado, routers e conectividade para fogares, despachos e pequenos negocios."
+    },
+    "security": {
+      "title": "Seguridade e protección de datos",
+      "description": "Copias de seguridade, MFA, cifrado e configuración segura para reducir riscos cotiáns."
+    },
+    "openPayment": "Abrir pagamento seguro",
+    "qrHelp": "Non podes abrir a ligazón? Escanea o QR.",
+    "qrAlt": "Código QR para abrir o pagamento seguro en Stripe",
+    "stripeNote": "Pagamento aloxado de forma segura por Stripe",
+    "consulting": {
+      "title": "Consultoría informática e tecnolóxica",
+      "description": "Asesoramento personalizado sobre equipos, compoñentes, redes, sistemas e seguridade básica."
+    }
+  },
+  "process": {
+    "kicker": "Como funciona",
+    "title": "Do teu problema a unha solución clara",
+    "description": "Un proceso sinxelo, con información suficiente para que manteñas o control.",
+    "request": {
+      "title": "Cóntame que ocorre",
+      "description": "Elixe o servizo e describe o equipo, o problema ou a mellora que necesitas."
+    },
+    "diagnosis": {
+      "title": "Reviso e propoño",
+      "description": "Valoro o caso e explícoche opcións, alcance e custo antes de intervir."
+    },
+    "solution": {
+      "title": "Resolvo e documento",
+      "description": "Realizo o traballo e déixoche un resumo claro do feito e das recomendacións."
+    }
+  },
+  "request": {
+    "kicker": "Para comezar",
+    "title": "Cóntame que necesitas",
+    "description": "Completa o formulario coa información que teñas. Non cómpre coñecer termos técnicos.",
+    "benefit1": "Sen compromiso e sen custos ocultos",
+    "benefit2": "Os teus datos úsanse só para xestionar a solicitude",
+    "benefit3": "Confirmareiche o seguinte paso antes de actuar",
+    "formTitle": "Nova solicitude",
+    "required": "* Campos obrigatorios",
+    "name": "Nome *",
+    "namePlaceholder": "Como te chamas?",
+    "email": "Correo electrónico *",
+    "emailPlaceholder": "ti@correo.gal",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+34 600 000 000",
+    "service": "Produto *",
+    "servicePlaceholder": "Selecciona unha opción",
+    "details": "Que necesitas? *",
+    "detailsPlaceholder": "Describe o problema, o equipo e calquera detalle que poida axudarme...",
+    "consent": "Lin e acepto o tratamento dos meus datos para xestionar esta solicitude.",
+    "submit": "Enviar solicitude",
+    "sending": "Enviando...",
+    "error": "Non se puido enviar a solicitude. Comproba a verificación e téntao de novo.",
+    "privacyNote": "A información úsase unicamente para preparar a túa solicitude.",
+    "successTitle": "Solicitude recibida",
+    "successDescription": "Recibín a túa solicitude. Revisarei a información e confirmareiche o seguinte paso.",
+    "newRequest": "Crear outra solicitude",
+    "consultingDuration": "Duración da consultoría *"
+  },
+  "captcha": {
+    "label": "Verificación de seguridade",
+    "help": "Cloudflare Turnstile comproba que a solicitude procede dunha persoa.",
+    "error": "Non se puido cargar a verificación de seguridade.",
+    "retry": "Tentar de novo"
+  },
+  "footer": {
+    "description": "Sistemas informáticos, redes e seguridade cun trato claro, responsable e próximo.",
+    "servicesTitle": "Servizos",
+    "contactTitle": "Contacto",
+    "location": "Jaén · Servizo remoto e presencial segundo a zona",
+    "schedule": "Luns a venres · 09:00–18:00",
+    "legal": "Privacidade · Aviso legal"
+  }
 }

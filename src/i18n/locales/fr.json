@@ -1,12 +1,136 @@
 {
-  "languages": { "label": "Langue", "es": "Espagnol", "gl": "Galicien", "ca": "Catalan", "ocAranes": "Aranais", "valencia": "Valencien", "fr": "Français", "enUS": "Anglais (États-Unis)", "de": "Allemand", "it": "Italien" },
-  "nav": { "ariaLabel": "Navigation principale", "services": "Services", "howItWorks": "Fonctionnement", "request": "Demander un service", "contact": "Contact", "cta": "Demander de l’aide", "menu": "Ouvrir le menu" },
-  "brand": { "visualLabel": "Identité visuelle de Sysvexa Technologies", "imageAlt": "Logo de Sysvexa Technologies" },
-  "hero": { "eyebrow": "Une assistance informatique claire et accessible", "titleStart": "Une technologie qui fonctionne.", "titleAccent": "Sans complications.", "description": "Je résous vos problèmes informatiques, améliore vos équipements et protège votre réseau grâce à des solutions pratiques pour les particuliers et les petites entreprises.", "primaryCta": "Demander un service", "secondaryCta": "Voir les services", "proof1": "Un diagnostic expliqué clairement", "proof2": "Première réponse sous 24 heures ouvrées", "statusLabel": "Votre demande", "statusValue": "Entre de bonnes mains" },
-  "trust": { "ariaLabel": "Domaines d’expertise", "intro": "Des solutions technologiques fiables pour vos", "item1": "Équipements", "item2": "Réseaux", "item3": "Données" },
-  "services": { "kicker": "Mon activité", "title": "Des solutions informatiques faciles à comprendre", "description": "Des services précis, un périmètre clair et des recommandations honnêtes. Je commence par ce dont vous avez réellement besoin.", "learnMore": "Demander ce service", "maintenance": { "title": "Maintenance et réparation", "description": "Diagnostic, optimisation, nettoyage et dépannage des ordinateurs et périphériques." }, "computers": { "title": "Assemblage et mise à niveau", "description": "Configurations équilibrées, mises à niveau et PC sur mesure adaptés à vos besoins et à votre budget." }, "networks": { "title": "Réseaux domestiques et professionnels", "description": "Wi-Fi fiable, câblage, routeurs et connectivité pour les domiciles, bureaux et petites entreprises." }, "security": { "title": "Sécurité et protection des données", "description": "Sauvegardes, MFA, chiffrement et configuration sécurisée pour réduire les risques quotidiens." } },
-  "process": { "kicker": "Fonctionnement", "title": "De votre problème à une solution claire", "description": "Un processus simple et suffisamment d’informations pour que vous gardiez le contrôle.", "request": { "title": "Décrivez-moi la situation", "description": "Choisissez le service et décrivez l’équipement, le problème ou l’amélioration souhaitée." }, "diagnosis": { "title": "J’évalue et je propose", "description": "J’étudie votre cas et vous présente les options, le périmètre et le coût avant toute intervention." }, "solution": { "title": "Je résous et je documente", "description": "Je réalise le travail et vous remets un résumé clair des actions effectuées et de mes recommandations." } },
-  "request": { "kicker": "Pour commencer", "title": "Dites-moi ce dont vous avez besoin", "description": "Renseignez les informations dont vous disposez. Aucun vocabulaire technique n’est nécessaire.", "benefit1": "Sans engagement et sans frais cachés", "benefit2": "Vos données servent uniquement à gérer votre demande", "benefit3": "Je vous confirme l’étape suivante avant d’agir", "formTitle": "Nouvelle demande", "required": "* Champs obligatoires", "name": "Nom *", "namePlaceholder": "Comment vous appelez-vous ?", "email": "Adresse e-mail *", "emailPlaceholder": "vous@exemple.fr", "phone": "Téléphone", "phonePlaceholder": "+33 6 00 00 00 00", "service": "Service *", "servicePlaceholder": "Sélectionnez une option", "details": "De quoi avez-vous besoin ? *", "detailsPlaceholder": "Décrivez le problème, l’équipement et tout détail susceptible de m’aider...", "consent": "J’ai lu et j’accepte le traitement de mes données pour gérer cette demande.", "submit": "Envoyer la demande", "sending": "Envoi en cours...", "error": "La demande n’a pas pu être envoyée. Vérifiez la validation de sécurité et réessayez.", "privacyNote": "Vos informations servent uniquement à préparer votre demande.", "successTitle": "Demande reçue", "successDescription": "J’ai reçu votre demande. Je vais examiner les informations et confirmer la prochaine étape.", "newRequest": "Créer une autre demande" },
-  "captcha": { "label": "Vérification de sécurité", "help": "Cloudflare Turnstile vérifie que la demande provient d’une personne.", "error": "La vérification de sécurité n’a pas pu être chargée.", "retry": "Réessayer" },
-  "footer": { "description": "Systèmes informatiques, réseaux et sécurité avec un service clair, responsable et accessible.", "servicesTitle": "Services", "contactTitle": "Contact", "location": "Jaén · Service à distance et sur place selon la zone", "schedule": "Du lundi au vendredi · 09:00–18:00", "legal": "Confidentialité · Mentions légales" }
+  "languages": {
+    "label": "Langue",
+    "es": "Espagnol",
+    "gl": "Galicien",
+    "ca": "Catalan",
+    "ocAranes": "Aranais",
+    "valencia": "Valencien",
+    "fr": "Français",
+    "enUS": "Anglais (États-Unis)",
+    "de": "Allemand",
+    "it": "Italien"
+  },
+  "nav": {
+    "ariaLabel": "Navigation principale",
+    "services": "Services",
+    "howItWorks": "Fonctionnement",
+    "request": "Demander un service",
+    "contact": "Contact",
+    "cta": "Demander de l’aide",
+    "menu": "Ouvrir le menu"
+  },
+  "brand": {
+    "visualLabel": "Identité visuelle de Sysvexa Technologies",
+    "imageAlt": "Logo de Sysvexa Technologies"
+  },
+  "hero": {
+    "eyebrow": "Une assistance informatique claire et accessible",
+    "titleStart": "Une technologie qui fonctionne.",
+    "titleAccent": "Sans complications.",
+    "description": "Je résous vos problèmes informatiques, améliore vos équipements et protège votre réseau grâce à des solutions pratiques pour les particuliers et les petites entreprises.",
+    "primaryCta": "Demander un service",
+    "secondaryCta": "Voir les services",
+    "proof1": "Un diagnostic expliqué clairement",
+    "proof2": "Première réponse sous 24 heures ouvrées",
+    "statusLabel": "Votre demande",
+    "statusValue": "Entre de bonnes mains"
+  },
+  "trust": {
+    "ariaLabel": "Domaines d’expertise",
+    "intro": "Des solutions technologiques fiables pour vos",
+    "item1": "Équipements",
+    "item2": "Réseaux",
+    "item3": "Données"
+  },
+  "services": {
+    "kicker": "Mon activité",
+    "title": "Des solutions informatiques faciles à comprendre",
+    "description": "Des services précis, un périmètre clair et des recommandations honnêtes. Je commence par ce dont vous avez réellement besoin.",
+    "learnMore": "Payer directement",
+    "maintenance": {
+      "title": "Maintenance et réparation",
+      "description": "Diagnostic, optimisation, nettoyage et dépannage des ordinateurs et périphériques."
+    },
+    "computers": {
+      "title": "Assemblage et mise à niveau",
+      "description": "Configurations équilibrées, mises à niveau et PC sur mesure adaptés à vos besoins et à votre budget."
+    },
+    "networks": {
+      "title": "Réseaux domestiques et professionnels",
+      "description": "Wi-Fi fiable, câblage, routeurs et connectivité pour les domiciles, bureaux et petites entreprises."
+    },
+    "security": {
+      "title": "Sécurité et protection des données",
+      "description": "Sauvegardes, MFA, chiffrement et configuration sécurisée pour réduire les risques quotidiens."
+    },
+    "openPayment": "Ouvrir le paiement sécurisé",
+    "qrHelp": "Vous ne pouvez pas ouvrir le lien ? Scannez le QR code.",
+    "qrAlt": "QR code pour ouvrir le paiement sécurisé Stripe",
+    "stripeNote": "Paiement hébergé de façon sécurisée par Stripe",
+    "consulting": {
+      "title": "Conseil informatique et technologique",
+      "description": "Conseil personnalisé sur les équipements, composants, réseaux, systèmes et la sécurité de base."
+    }
+  },
+  "process": {
+    "kicker": "Fonctionnement",
+    "title": "De votre problème à une solution claire",
+    "description": "Un processus simple et suffisamment d’informations pour que vous gardiez le contrôle.",
+    "request": {
+      "title": "Décrivez-moi la situation",
+      "description": "Choisissez le service et décrivez l’équipement, le problème ou l’amélioration souhaitée."
+    },
+    "diagnosis": {
+      "title": "J’évalue et je propose",
+      "description": "J’étudie votre cas et vous présente les options, le périmètre et le coût avant toute intervention."
+    },
+    "solution": {
+      "title": "Je résous et je documente",
+      "description": "Je réalise le travail et vous remets un résumé clair des actions effectuées et de mes recommandations."
+    }
+  },
+  "request": {
+    "kicker": "Pour commencer",
+    "title": "Dites-moi ce dont vous avez besoin",
+    "description": "Renseignez les informations dont vous disposez. Aucun vocabulaire technique n’est nécessaire.",
+    "benefit1": "Sans engagement et sans frais cachés",
+    "benefit2": "Vos données servent uniquement à gérer votre demande",
+    "benefit3": "Je vous confirme l’étape suivante avant d’agir",
+    "formTitle": "Nouvelle demande",
+    "required": "* Champs obligatoires",
+    "name": "Nom *",
+    "namePlaceholder": "Comment vous appelez-vous ?",
+    "email": "Adresse e-mail *",
+    "emailPlaceholder": "vous@exemple.fr",
+    "phone": "Téléphone",
+    "phonePlaceholder": "+33 6 00 00 00 00",
+    "service": "Produit *",
+    "servicePlaceholder": "Sélectionnez une option",
+    "details": "De quoi avez-vous besoin ? *",
+    "detailsPlaceholder": "Décrivez le problème, l’équipement et tout détail susceptible de m’aider...",
+    "consent": "J’ai lu et j’accepte le traitement de mes données pour gérer cette demande.",
+    "submit": "Envoyer la demande",
+    "sending": "Envoi en cours...",
+    "error": "La demande n’a pas pu être envoyée. Vérifiez la validation de sécurité et réessayez.",
+    "privacyNote": "Vos informations servent uniquement à préparer votre demande.",
+    "successTitle": "Demande reçue",
+    "successDescription": "J’ai reçu votre demande. Je vais examiner les informations et confirmer la prochaine étape.",
+    "newRequest": "Créer une autre demande",
+    "consultingDuration": "Durée de la consultation *"
+  },
+  "captcha": {
+    "label": "Vérification de sécurité",
+    "help": "Cloudflare Turnstile vérifie que la demande provient d’une personne.",
+    "error": "La vérification de sécurité n’a pas pu être chargée.",
+    "retry": "Réessayer"
+  },
+  "footer": {
+    "description": "Systèmes informatiques, réseaux et sécurité avec un service clair, responsable et accessible.",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "location": "Jaén · Service à distance et sur place selon la zone",
+    "schedule": "Du lundi au vendredi · 09:00–18:00",
+    "legal": "Confidentialité · Mentions légales"
+  }
 }

@@ -7,8 +7,8 @@ export async function saveServiceRequest(
 ): Promise<void> {
   const result = await env.DB.prepare(
     `INSERT INTO sysvexa_service_requests
-      (id, name, email, phone, service, details, locale, consent_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      (id, name, email, phone, service, product_option, details, locale, consent_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   )
     .bind(
       id,
@@ -16,6 +16,7 @@ export async function saveServiceRequest(
       input.email,
       input.phone,
       input.service,
+      input.productOption,
       input.details,
       input.locale,
       new Date().toISOString(),

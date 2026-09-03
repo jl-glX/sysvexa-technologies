@@ -76,7 +76,7 @@ se pueden consultar o cambiar desde Wrangler:
 
 ```sh
 # Últimas solicitudes
-npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc --command "SELECT id, created_at, name, email, phone, service, status FROM sysvexa_service_requests ORDER BY created_at DESC LIMIT 25"
+  npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc --command "SELECT id, created_at, name, email, phone, service, product_option, status FROM sysvexa_service_requests ORDER BY created_at DESC LIMIT 25"
 
 # Marcar una solicitud como contactada
 npx wrangler d1 execute sysvexa-service-requests --remote --config cloudflare/forms/wrangler.jsonc --command "UPDATE sysvexa_service_requests SET status = 'contacted' WHERE id = '<REQUEST_ID>'"
