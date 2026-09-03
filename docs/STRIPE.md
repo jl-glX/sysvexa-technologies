@@ -25,6 +25,12 @@ Cada tarjeta abre un cajón de respaldo con el enlace y un QR. El QR se genera
 localmente en el navegador a partir del mismo enlace, por lo que no depende de
 un servicio externo ni puede quedar desactualizado respecto al botón.
 
+Todos los destinos de pago se validan al construir el catálogo y otra vez justo
+antes de navegar: deben usar HTTPS y pertenecer exactamente a
+`buy.stripe.com` o `book.stripe.com`. Los enlaces no incorporan ningún dato del
+formulario. El perfil completo está en
+[`CIFRADO-EN-TRANSITO.md`](./CIFRADO-EN-TRANSITO.md).
+
 El formulario guarda la solicitud antes de redirigir. La modalidad de
 consultoría se representa directamente mediante `service=consulting_30`,
 `service=consulting_60` o `service=consulting_90`; no se persiste una segunda

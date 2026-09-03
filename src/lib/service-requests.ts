@@ -1,3 +1,5 @@
+import { assertSecureFormTransport } from "./transport-security";
+
 export interface ServiceRequestPayload {
   name: string;
   email: string;
@@ -20,7 +22,11 @@ export class ServiceRequestError extends Error {
 export async function submitServiceRequest(
   payload: ServiceRequestPayload,
   fetcher: typeof fetch = fetch,
+  pageUrl: string | URL = typeof window === "undefined"
+    ? "https://sysvexatechnologies.com/"
+    : window.location.href,
 ): Promise<{ requestId: string }> {
+  assertSecureFormTransport(pageUrl);
   const response = await fetcher("/api/service-requests", {
     method: "POST",
     credentials: "same-origin",

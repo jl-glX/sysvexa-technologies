@@ -52,6 +52,7 @@ Referencias de diseño:
 
 - [Introducción a Cloudflare D1](https://developers.cloudflare.com/d1/)
 - [Validación de Turnstile en el servidor](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
+- [Cifrado en tránsito](./CIFRADO-EN-TRANSITO.md)
 
 ## Límites de responsabilidad
 

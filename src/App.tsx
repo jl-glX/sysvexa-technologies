@@ -7,6 +7,7 @@ import { PaymentDrawer } from "./components/PaymentDrawer";
 import { ProductSelector } from "./components/ProductSelector";
 import { products, resolveProductSelection, type ProductKey } from "./lib/products";
 import { submitServiceRequest } from "./lib/service-requests";
+import { navigateToStripePayment } from "./lib/transport-security";
 
 const productIcons = {
   maintenance: Wrench,
@@ -53,7 +54,7 @@ export default function App() {
       setSelectedProduct("");
       setSelectedOption("");
       setRequestStatus("sent");
-      if (shouldPay) window.location.assign(selection.paymentOption.paymentUrl);
+      if (shouldPay) navigateToStripePayment(selection.paymentOption.paymentUrl);
     } catch {
       setRequestStatus("error");
     } finally {

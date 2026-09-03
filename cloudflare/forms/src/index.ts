@@ -14,9 +14,19 @@ function json(payload: object, status = 200): Response {
     headers: {
       "Cache-Control": "no-store",
       "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+      "Referrer-Policy": "no-referrer",
+      "Strict-Transport-Security": "max-age=31536000",
       "X-Content-Type-Options": "nosniff",
     },
   });
+}
+
+export function requestUsesSecureTransport(request: Request): boolean {
+  const url = new URL(request.url);
+  return url.protocol === "https:" || (
+    url.protocol === "http:" &&
+    (url.hostname === "localhost" || url.hostname === "127.0.0.1" || url.hostname === "[::1]")
+  );
 }
 
 function allowedHostnames(env: Env): Set<string> {
@@ -81,6 +91,10 @@ async function handleRequest(
 ): Promise<Response> {
   const url = new URL(request.url);
   const hostnames = allowedHostnames(env);
+
+  if (!requestUsesSecureTransport(request)) {
+    return json({ code: "HTTPS_REQUIRED" }, 400);
+  }
 
   if (
     request.method === "GET" &&

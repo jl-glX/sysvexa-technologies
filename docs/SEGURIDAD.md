@@ -36,3 +36,13 @@ solicitud.
 La conservación y el borrado manual de solicitudes se describen en
 [`FORMULARIOS.md`](./FORMULARIOS.md). No existe por ahora un borrado automático:
 el plazo definitivo debe aprobarse antes de convertirlo en una tarea programada.
+
+## Cifrado en tránsito
+
+El perfil de transporte reutiliza la decisión de Umbravia Forge: TLS 1.2 o 1.3
+con suites AEAD protege el formulario y la salida a Stripe. El frontend y el
+Worker rechazan HTTP público, y los destinos de pago se limitan a los hosts
+alojados de Stripe mediante una lista exacta. No se distribuye una clave AES en
+el JavaScript público ni se inventa un sobre adicional sobre HTTPS. El diseño y
+sus límites se documentan en
+[`CIFRADO-EN-TRANSITO.md`](./CIFRADO-EN-TRANSITO.md).

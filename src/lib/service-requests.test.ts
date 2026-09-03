@@ -42,4 +42,12 @@ describe("service request client", () => {
       expect.any(ServiceRequestError),
     );
   });
+
+  it("fails closed before sending form data over public HTTP", async () => {
+    const fetcher = vi.fn();
+    await expect(
+      submitServiceRequest(payload, fetcher, "http://sysvexatechnologies.com/"),
+    ).rejects.toMatchObject({ code: "INSECURE_FORM_TRANSPORT" });
+    expect(fetcher).not.toHaveBeenCalled();
+  });
 });

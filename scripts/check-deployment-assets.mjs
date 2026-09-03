@@ -81,6 +81,22 @@ if (!caddy.includes(formsUpstream) || !nginx.includes(formsUpstream)) {
   throw new Error("Caddy y Nginx deben dirigir el formulario al Worker dedicado");
 }
 
+for (const marker of ["Strict-Transport-Security", "https://forms.sysvexatechnologies.com"]) {
+  if (!caddy.includes(marker)) {
+    throw new Error(`Caddy no aplica el control de transporte requerido: ${marker}`);
+  }
+}
+for (const marker of [
+  "ssl_protocols TLSv1.2 TLSv1.3",
+  "proxy_ssl_protocols TLSv1.2 TLSv1.3",
+  "proxy_ssl_verify on",
+  "proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt",
+]) {
+  if (!nginx.includes(marker)) {
+    throw new Error(`Nginx no aplica el control de transporte requerido: ${marker}`);
+  }
+}
+
 const perimeterMarkers = [
   ["@automated_probes", "Perfil de sondas"],
   ["@dangerous_methods", "Bloqueo de metodos peligrosos"],
