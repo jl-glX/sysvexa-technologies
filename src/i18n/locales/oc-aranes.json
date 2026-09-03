@@ -121,7 +121,6 @@
   },
   "captcha": {
     "label": "Verificacion de seguretat",
-    "help": "Cloudflare Turnstile compròve qu'era sollicitud proven d'ua persona.",
     "error": "Non s'a podut cargar era verificacion de seguretat.",
     "retry": "Tornar-ac a provar"
   },

@@ -149,7 +149,6 @@ export function CaptchaWidget({
   return (
     <div className="captcha-widget" aria-label={t("captcha.label")}>
       <div id={containerId} className="captcha-container" />
-      <p>{t("captcha.help")}</p>
     </div>
   );
 }

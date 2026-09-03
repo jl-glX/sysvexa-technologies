@@ -121,7 +121,6 @@
   },
   "captcha": {
     "label": "Verificación de seguridade",
-    "help": "Cloudflare Turnstile comproba que a solicitude procede dunha persoa.",
     "error": "Non se puido cargar a verificación de seguridade.",
     "retry": "Tentar de novo"
   },
