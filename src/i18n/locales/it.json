@@ -51,19 +51,19 @@
     "learnMore": "Link di pagamento alternativo",
     "maintenance": {
       "title": "Manutenzione e riparazione",
-      "description": "Diagnosi, ottimizzazione, pulizia e risoluzione dei guasti di computer e periferiche."
+      "description": "Verifica di hardware e software, diagnosi di guasti e prestazioni, pulizia, manutenzione preventiva, aggiornamenti e consigli per riparazioni o miglioramenti. Il prezzo base non include materiali né interventi aggiuntivi."
     },
     "computers": {
       "title": "Assemblaggio e aggiornamento PC",
-      "description": "Configurazioni equilibrate, aggiornamenti e PC su misura adatti alle tue esigenze e al tuo budget."
+      "description": "Assemblaggio su misura con verifica della compatibilità, installazione dei componenti, cablaggio, BIOS/UEFI, driver e test di stabilità. Componenti e licenze sono preventivati a parte."
     },
     "networks": {
       "title": "Reti domestiche e professionali",
-      "description": "Wi-Fi stabile, cablaggio, router e connettività per abitazioni, uffici e piccole imprese."
+      "description": "Diagnosi e configurazione di reti domestiche o per piccole imprese: router, Wi-Fi, copertura, cablaggio, DNS, dispositivi e risoluzione dei problemi. Il prezzo base non include materiali né interventi aggiuntivi."
     },
     "security": {
       "title": "Sicurezza e protezione dei dati",
-      "description": "Backup, MFA, crittografia e configurazioni sicure per ridurre i rischi quotidiani."
+      "description": "Configurazione di sicurezza di base per dispositivi, account e dati: crittografia, MFA, backup, verifica dei permessi e consigli per ridurre i rischi. Il prezzo base non include materiali né interventi aggiuntivi."
     },
     "openPayment": "Apri il pagamento sicuro",
     "qrHelp": "Non riesci ad aprire il link? Scansiona il codice QR.",
@@ -71,7 +71,7 @@
     "stripeNote": "Pagamento ospitato in modo sicuro da Stripe",
     "consulting": {
       "title": "Consulenza informatica e tecnologica",
-      "description": "Consulenza personalizzata su dispositivi, componenti, reti, sistemi e sicurezza di base."
+      "description": "Consulenza personalizzata su dispositivi, componenti, reti, sistemi e sicurezza di base, con analisi delle esigenze, confronto delle opzioni e raccomandazioni su misura."
     }
   },
   "process": {

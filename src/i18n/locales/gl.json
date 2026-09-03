@@ -51,19 +51,19 @@
     "learnMore": "Ligazón de pagamento alternativa",
     "maintenance": {
       "title": "Mantemento e reparación",
-      "description": "Diagnóstico, posta a punto, limpeza e solución de avarías en ordenadores e periféricos."
+      "description": "Revisión de hardware e software, diagnóstico de fallos e rendemento, limpeza, mantemento preventivo, actualizacións e recomendacións de reparación ou mellora. O prezo base non inclúe materiais nin traballos adicionais."
     },
     "computers": {
       "title": "Montaxe e mellora de equipos",
-      "description": "Configuracións equilibradas, ampliacións e montaxe de PC adaptados ao teu uso e orzamento."
+      "description": "Montaxe á medida con comprobación de compatibilidade, instalación de compoñentes, cableado, BIOS/UEFI, controladores e probas de estabilidade. Os compoñentes e as licenzas orzaméntanse á parte."
     },
     "networks": {
       "title": "Redes domésticas e profesionais",
-      "description": "Wi-Fi estable, cableado, routers e conectividade para fogares, despachos e pequenos negocios."
+      "description": "Diagnóstico e configuración de redes domésticas ou de pequenos negocios: routers, Wi-Fi, cobertura, cableado, DNS, dispositivos e resolución de incidencias. O prezo base non inclúe materiais nin traballos adicionais."
     },
     "security": {
       "title": "Seguridade e protección de datos",
-      "description": "Copias de seguridade, MFA, cifrado e configuración segura para reducir riscos cotiáns."
+      "description": "Configuración básica de seguridade para equipos, contas e datos: cifrado, MFA, copias de seguridade, revisión de permisos e recomendacións para reducir riscos. O prezo base non inclúe materiais nin traballos adicionais."
     },
     "openPayment": "Abrir pagamento seguro",
     "qrHelp": "Non podes abrir a ligazón? Escanea o QR.",
@@ -71,7 +71,7 @@
     "stripeNote": "Pagamento aloxado de forma segura por Stripe",
     "consulting": {
       "title": "Consultoría informática e tecnolóxica",
-      "description": "Asesoramento personalizado sobre equipos, compoñentes, redes, sistemas e seguridade básica."
+      "description": "Asesoramento personalizado sobre equipos, compoñentes, redes, sistemas e seguridade básica, con análise de necesidades, comparación de opcións e recomendacións adaptadas."
     }
   },
   "process": {

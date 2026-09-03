@@ -51,19 +51,19 @@
     "learnMore": "Enllaç de pagament alternatiu",
     "maintenance": {
       "title": "Manteniment i reparació",
-      "description": "Diagnòstic, posada a punt, neteja i solució d'avaries en ordinadors i perifèrics."
+      "description": "Revisió de maquinari i programari, diagnòstic d'avaries i rendiment, neteja, manteniment preventiu, actualitzacions i recomanacions de reparació o millora. El preu base no inclou materials ni treballs addicionals."
     },
     "computers": {
       "title": "Muntatge i millora d'equips",
-      "description": "Configuracions equilibrades, ampliacions i muntatge de PC adaptats al teu ús i pressupost."
+      "description": "Muntatge a mida amb comprovació de compatibilitat, instal·lació de components, cablejat, BIOS/UEFI, controladors i proves d'estabilitat. Els components i les llicències es pressuposten a part."
     },
     "networks": {
       "title": "Xarxes domèstiques i professionals",
-      "description": "Wi-Fi estable, cablejat, encaminadors i connectivitat per a llars, despatxos i petits negocis."
+      "description": "Diagnòstic i configuració de xarxes domèstiques o de petits negocis: encaminadors, Wi-Fi, cobertura, cablejat, DNS, dispositius i resolució d'incidències. El preu base no inclou materials ni treballs addicionals."
     },
     "security": {
       "title": "Seguretat i protecció de dades",
-      "description": "Còpies de seguretat, MFA, xifratge i configuració segura per reduir riscos quotidians."
+      "description": "Configuració bàsica de seguretat per a equips, comptes i dades: xifratge, MFA, còpies de seguretat, revisió de permisos i recomanacions per reduir riscos. El preu base no inclou materials ni treballs addicionals."
     },
     "openPayment": "Obrir pagament segur",
     "qrHelp": "No pots obrir l’enllaç? Escaneja el QR.",
@@ -71,7 +71,7 @@
     "stripeNote": "Pagament allotjat de manera segura per Stripe",
     "consulting": {
       "title": "Consultoria informàtica i tecnològica",
-      "description": "Assessorament personalitzat sobre equips, components, xarxes, sistemes i seguretat bàsica."
+      "description": "Assessorament personalitzat sobre equips, components, xarxes, sistemes i seguretat bàsica, amb anàlisi de necessitats, comparació d'opcions i recomanacions adaptades."
     }
   },
   "process": {

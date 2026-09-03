@@ -51,19 +51,19 @@
     "learnMore": "Ligam de pagament alternatiu",
     "maintenance": {
       "title": "Mantenença e reparacion",
-      "description": "Diagnostic, metuda a punt, neteja e solucion d'avaries en ordenadors e periferics."
+      "description": "Revision de hardware e software, diagnostic de falhes e rendiment, neteja, mantenença preventiva, actualizacions e recomanacions de reparacion o melhora. Eth prètz de basa non includís materiaus ne trabalhs addicionaus."
     },
     "computers": {
       "title": "Montatge e melhora d'equipaments",
-      "description": "Configuracions equilibrades, ampliacions e montatge de PC adaptadi ath tòn usatge e pressupòst."
+      "description": "Montatge a mesura damb comprobacion de compatibilitat, installacion de components, cablatge, BIOS/UEFI, controladors e pròves d'estabilitat. Es components e licéncies se pressupòsten a part."
     },
     "networks": {
       "title": "Hilats domestics e professionaus",
-      "description": "Wi-Fi estable, cablatge, rotadors e connectivitat entà cases, burèus e petiti negòcis."
+      "description": "Diagnostic e configuracion de hilats domestics o de petiti negòcis: rotadors, Wi-Fi, cobertura, cablatge, DNS, dispositius e resolucion d'incidéncies. Eth prètz de basa non includís materiaus ne trabalhs addicionaus."
     },
     "security": {
       "title": "Seguretat e proteccion de donades",
-      "description": "Còpies de seguretat, MFA, chifratge e configuracion segura entà redusir es risques quotidians."
+      "description": "Configuracion basica de seguretat entà equipaments, compdes e donades: chifratge, MFA, còpies de seguretat, revision de permissions e recomanacions entà redusir risques. Eth prètz de basa non includís materiaus ne trabalhs addicionaus."
     },
     "openPayment": "Daubrir pagament segur",
     "qrHelp": "Non pòs daurir eth ligam? Escanèja eth QR.",
@@ -71,7 +71,7 @@
     "stripeNote": "Pagament lotjat de forma segura per Stripe",
     "consulting": {
       "title": "Consultoria informatica e tecnologica",
-      "description": "Assessorament personalizat sus equipaments, components, hilats, sistèmes e seguretat basica."
+      "description": "Assessorament personalizat sus equipaments, components, hilats, sistèmes e seguretat basica, damb analisi de besonhs, comparacion d'opcions e recomanacions adaptades."
     }
   },
   "process": {

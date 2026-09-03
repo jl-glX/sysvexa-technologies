@@ -51,19 +51,19 @@
     "learnMore": "Alternative payment link",
     "maintenance": {
       "title": "Maintenance and repairs",
-      "description": "Diagnostics, tune-ups, cleaning, and troubleshooting for computers and peripherals."
+      "description": "Hardware and software review, fault and performance diagnostics, cleaning, preventive maintenance, updates, and repair or upgrade recommendations. The base price excludes materials and additional work."
     },
     "computers": {
       "title": "Custom builds and upgrades",
-      "description": "Balanced configurations, upgrades, and custom PCs tailored to your needs and budget."
+      "description": "Custom PC assembly with compatibility checks, component installation, cable management, BIOS/UEFI, drivers, and stability tests. Components and licences are quoted separately."
     },
     "networks": {
       "title": "Home and business networks",
-      "description": "Reliable Wi-Fi, cabling, routers, and connectivity for homes, offices, and small businesses."
+      "description": "Diagnosis and setup of home or small-business networks: routers, Wi-Fi, coverage, cabling, DNS, devices, and network troubleshooting. The base price excludes materials and additional work."
     },
     "security": {
       "title": "Security and data protection",
-      "description": "Backups, MFA, encryption, and secure configurations to reduce everyday risks."
+      "description": "Basic security setup for devices, accounts, and data: encryption, MFA, backups, permission reviews, and practical recommendations to reduce risk. The base price excludes materials and additional work."
     },
     "openPayment": "Open secure payment",
     "qrHelp": "Can’t open the link? Scan the QR code.",
@@ -71,7 +71,7 @@
     "stripeNote": "Payment securely hosted by Stripe",
     "consulting": {
       "title": "IT and technology consulting",
-      "description": "Personalized advice on devices, components, networks, systems, and basic security."
+      "description": "Personalized advice on devices, components, networks, systems, and basic security, including needs analysis, option comparisons, and tailored recommendations."
     }
   },
   "process": {

@@ -51,19 +51,19 @@
     "learnMore": "Alternativer Zahlungslink",
     "maintenance": {
       "title": "Wartung und Reparatur",
-      "description": "Diagnose, Optimierung, Reinigung und Fehlerbehebung für Computer und Peripheriegeräte."
+      "description": "Überprüfung von Hardware und Software, Fehler- und Leistungsdiagnose, Reinigung, vorbeugende Wartung, Updates sowie Reparatur- oder Aufrüstungsempfehlungen. Der Grundpreis umfasst keine Materialien oder zusätzlichen Arbeiten."
     },
     "computers": {
       "title": "PC-Bau und Aufrüstung",
-      "description": "Ausgewogene Konfigurationen, Upgrades und individuell zusammengestellte PCs für Ihren Bedarf und Ihr Budget."
+      "description": "Individueller PC-Zusammenbau mit Kompatibilitätsprüfung, Komponenteneinbau, Kabelmanagement, BIOS/UEFI, Treibern und Stabilitätstests. Komponenten und Lizenzen werden separat angeboten."
     },
     "networks": {
       "title": "Netzwerke für Zuhause und Betrieb",
-      "description": "Stabiles WLAN, Verkabelung, Router und Konnektivität für Wohnungen, Büros und kleine Unternehmen."
+      "description": "Diagnose und Einrichtung von Heim- oder Kleinunternehmensnetzwerken: Router, WLAN, Abdeckung, Verkabelung, DNS, Geräte und Fehlerbehebung. Der Grundpreis umfasst keine Materialien oder zusätzlichen Arbeiten."
     },
     "security": {
       "title": "Sicherheit und Datenschutz",
-      "description": "Backups, MFA, Verschlüsselung und sichere Konfigurationen zur Verringerung alltäglicher Risiken."
+      "description": "Grundlegende Sicherheitskonfiguration für Geräte, Konten und Daten: Verschlüsselung, MFA, Backups, Berechtigungsprüfung und Empfehlungen zur Risikominimierung. Der Grundpreis umfasst keine Materialien oder zusätzlichen Arbeiten."
     },
     "openPayment": "Sichere Zahlung öffnen",
     "qrHelp": "Link lässt sich nicht öffnen? Scannen Sie den QR-Code.",
@@ -71,7 +71,7 @@
     "stripeNote": "Sicher von Stripe gehostete Zahlung",
     "consulting": {
       "title": "IT- und Technologieberatung",
-      "description": "Persönliche Beratung zu Geräten, Komponenten, Netzwerken, Systemen und grundlegender Sicherheit."
+      "description": "Persönliche Beratung zu Geräten, Komponenten, Netzwerken, Systemen und grundlegender Sicherheit mit Bedarfsanalyse, Optionsvergleich und passenden Empfehlungen."
     }
   },
   "process": {

@@ -51,19 +51,19 @@
     "learnMore": "Enlace de pago alternativo",
     "maintenance": {
       "title": "Diagnóstico y mantenimiento informático",
-      "description": "Revisión, diagnóstico, mantenimiento preventivo, limpieza, actualización y puesta a punto de ordenadores."
+      "description": "Revisión de hardware y software, diagnóstico de fallos y rendimiento, limpieza, mantenimiento preventivo, actualizaciones y recomendaciones de reparación o mejora. El precio base no incluye materiales ni trabajos adicionales."
     },
     "computers": {
       "title": "Montaje completo y puesta en marcha de PC",
-      "description": "Montaje a medida, instalación de componentes, cableado, configuración inicial y pruebas de funcionamiento."
+      "description": "Montaje a medida con comprobación de compatibilidad, instalación de componentes, cableado, BIOS/UEFI, controladores y pruebas de estabilidad. Componentes y licencias se presupuestan aparte."
     },
     "networks": {
       "title": "Mantenimiento y configuración de redes",
-      "description": "Diagnóstico y configuración de routers, Wi-Fi, puntos de acceso, cableado y conectividad."
+      "description": "Diagnóstico y configuración de redes domésticas o de pequeños negocios: routers, Wi-Fi, cobertura, cableado, DNS, dispositivos y resolución de incidencias. El precio base no incluye materiales ni trabajos adicionales."
     },
     "security": {
       "title": "Seguridad y protección de datos",
-      "description": "Copias de seguridad, MFA, cifrado y configuración segura para reducir riesgos cotidianos."
+      "description": "Configuración básica de seguridad para equipos, cuentas y datos: cifrado, MFA, copias de seguridad, revisión de permisos y recomendaciones para reducir riesgos. El precio base no incluye materiales ni trabajos adicionales."
     },
     "openPayment": "Abrir pago seguro",
     "qrHelp": "¿No puedes abrir el enlace? Escanea el QR.",
@@ -71,7 +71,7 @@
     "stripeNote": "Pago alojado de forma segura por Stripe",
     "consulting": {
       "title": "Consultoría informática y tecnológica",
-      "description": "Asesoramiento personalizado sobre equipos, componentes, redes, sistemas y seguridad básica."
+      "description": "Asesoramiento personalizado sobre equipos, componentes, redes, sistemas y seguridad básica, con análisis de necesidades, comparación de opciones y recomendaciones adaptadas."
     }
   },
   "process": {

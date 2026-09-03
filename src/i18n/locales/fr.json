@@ -51,19 +51,19 @@
     "learnMore": "Lien de paiement alternatif",
     "maintenance": {
       "title": "Maintenance et réparation",
-      "description": "Diagnostic, optimisation, nettoyage et dépannage des ordinateurs et périphériques."
+      "description": "Contrôle du matériel et des logiciels, diagnostic des pannes et des performances, nettoyage, maintenance préventive, mises à jour et recommandations de réparation ou d'amélioration. Le prix de base n'inclut pas le matériel ni les travaux supplémentaires."
     },
     "computers": {
       "title": "Assemblage et mise à niveau",
-      "description": "Configurations équilibrées, mises à niveau et PC sur mesure adaptés à vos besoins et à votre budget."
+      "description": "Assemblage sur mesure avec contrôle de compatibilité, installation des composants, câblage, BIOS/UEFI, pilotes et tests de stabilité. Composants et licences font l'objet d'un devis séparé."
     },
     "networks": {
       "title": "Réseaux domestiques et professionnels",
-      "description": "Wi-Fi fiable, câblage, routeurs et connectivité pour les domiciles, bureaux et petites entreprises."
+      "description": "Diagnostic et configuration de réseaux domestiques ou de petites entreprises : routeurs, Wi-Fi, couverture, câblage, DNS, appareils et résolution d'incidents. Le prix de base n'inclut pas le matériel ni les travaux supplémentaires."
     },
     "security": {
       "title": "Sécurité et protection des données",
-      "description": "Sauvegardes, MFA, chiffrement et configuration sécurisée pour réduire les risques quotidiens."
+      "description": "Configuration de sécurité de base pour les appareils, comptes et données : chiffrement, MFA, sauvegardes, vérification des autorisations et recommandations pour réduire les risques. Le prix de base n'inclut pas le matériel ni les travaux supplémentaires."
     },
     "openPayment": "Ouvrir le paiement sécurisé",
     "qrHelp": "Vous ne pouvez pas ouvrir le lien ? Scannez le QR code.",
@@ -71,7 +71,7 @@
     "stripeNote": "Paiement hébergé de façon sécurisée par Stripe",
     "consulting": {
       "title": "Conseil informatique et technologique",
-      "description": "Conseil personnalisé sur les équipements, composants, réseaux, systèmes et la sécurité de base."
+      "description": "Conseil personnalisé sur les équipements, composants, réseaux, systèmes et la sécurité de base, avec analyse des besoins, comparaison des options et recommandations adaptées."
     }
   },
   "process": {

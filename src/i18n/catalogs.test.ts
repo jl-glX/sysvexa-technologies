@@ -29,4 +29,13 @@ describe("translation catalogs", () => {
     const catalanKeys = new Set(keys(ca));
     expect(keys(caValencia).every((key) => catalanKeys.has(key))).toBe(true);
   });
+
+  it("keeps the Spanish service scope and price exclusions explicit", () => {
+    expect(es.services.maintenance.description).toContain("hardware y software");
+    expect(es.services.maintenance.description).toContain("precio base");
+    expect(es.services.computers.description).toContain("Componentes y licencias se presupuestan aparte");
+    expect(es.services.networks.description).toContain("DNS");
+    expect(es.services.security.description).toContain("revisión de permisos");
+    expect(es.services.consulting.description).toContain("análisis de necesidades");
+  });
 });
