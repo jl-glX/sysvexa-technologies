@@ -56,7 +56,8 @@ Referencias de diseño:
 ## Límites de responsabilidad
 
 - Lightsail no almacena datos de clientes ni claves de Stripe.
-- El Worker valida origen, entrada, consentimiento y Turnstile antes de escribir.
+- El Worker valida origen, entrada, confirmación de lectura de privacidad y
+  Turnstile antes de escribir.
 - D1 persiste las solicitudes y sus migraciones se versionan con el Worker.
 - Los secretos de Stripe viven en el entorno del Worker.
 - El webhook verifica la firma sobre el cuerpo original antes de escribir.

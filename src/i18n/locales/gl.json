@@ -110,12 +110,21 @@
     "servicePlaceholder": "Selecciona unha opción",
     "details": "Que necesitas? *",
     "detailsPlaceholder": "Describe o problema, o equipo e calquera detalle que poida axudarme...",
-    "consent": "Lin e acepto o tratamento dos meus datos para xestionar esta solicitude.",
+    "privacySummary": {
+      "title": "Información básica sobre protección de datos",
+      "controller": "Responsable: Sysvexa Technologies.",
+      "purpose": "Finalidade: xestionar a túa solicitude, contactar contigo e preparar o servizo ou orzamento.",
+      "basis": "Base xurídica: medidas precontractuais solicitadas por ti e, cando proceda, execución do servizo.",
+      "recipients": "Destinatarios: provedores tecnolóxicos necesarios. Non se venden os teus datos.",
+      "rights": "Dereitos: acceso, rectificación, supresión, oposición, limitación e portabilidade cando corresponda.",
+      "fullInfo": "Información sobre protección de datos",
+      "policy": "Política de privacidade"
+    },
+    "acknowledgement": "Lin a <dataProtectionLink>Información sobre protección de datos</dataProtectionLink> relativa a esta solicitude.",
     "submit": "Enviar solicitude",
     "submitAndPay": "Enviar e pagar agora",
     "sending": "Enviando...",
     "error": "Non se puido enviar a solicitude. Comproba a verificación e téntao de novo.",
-    "privacyNote": "A información úsase unicamente para preparar a túa solicitude.",
     "successTitle": "Solicitude recibida",
     "successDescription": "Recibín a túa solicitude. Revisarei a información e confirmareiche o seguinte paso.",
     "newRequest": "Crear outra solicitude",
@@ -132,6 +141,8 @@
     "contactTitle": "Contacto",
     "location": "Jaén · Servizo remoto e presencial segundo a zona",
     "schedule": "Luns a venres · 09:00–18:00",
-    "legal": "Privacidade · Aviso legal"
+    "legalAriaLabel": "Documentos de privacidade",
+    "dataProtection": "Protección de datos",
+    "privacy": "Política de privacidade"
   }
 }

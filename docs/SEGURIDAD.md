@@ -29,8 +29,9 @@ Cloudflare.
 ## Formulario
 
 El Worker valida método, ruta, origen, tipo y tamaño del contenido, campos,
-consentimiento, campo trampa y token Turnstile antes de escribir en D1. El token
-y la clave secreta nunca se almacenan junto a la solicitud.
+confirmación de lectura de privacidad, campo trampa y token Turnstile antes de
+escribir en D1. El token y la clave secreta nunca se almacenan junto a la
+solicitud.
 
 La conservación y el borrado manual de solicitudes se describen en
 [`FORMULARIOS.md`](./FORMULARIOS.md). No existe por ahora un borrado automático:

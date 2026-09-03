@@ -110,12 +110,21 @@
     "servicePlaceholder": "Selecciona ua opcion",
     "details": "Qué as de besonh? *",
     "detailsPlaceholder": "Descriu eth problèma, er equipament e quinsevolh detalh que pogue ajudar-me...",
-    "consent": "È liejut e accèpti eth tractament des mies donades entà gerir aguesta sollicitud.",
+    "privacySummary": {
+      "title": "Informacion basica sus proteccion de donades",
+      "controller": "Responsable: Sysvexa Technologies.",
+      "purpose": "Finalitat: gerir era tua sollicitud, contactar damb tu e preparar eth servici o pressupòst.",
+      "basis": "Basa juridica: mesures precontractuaus sollicitades per tu e, se cau, execucion deth servici.",
+      "recipients": "Destinataris: provedidors tecnologics de besonh. Es tues donades non se venen.",
+      "rights": "Drets: accès, rectificacion, supression, oposicion, limitacion e portabilitat quan correspongue.",
+      "fullInfo": "Informacion sus proteccion de donades",
+      "policy": "Politica de privacitat"
+    },
+    "acknowledgement": "È liejut era <dataProtectionLink>Informacion sus proteccion de donades</dataProtectionLink> relativa ad aguesta sollicitud.",
     "submit": "Enviar era sollicitud",
     "submitAndPay": "Enviar e pagar ara",
     "sending": "En tot enviar...",
     "error": "Non s'a podut enviar era sollicitud. Compròva era verificacion e torna-ac a provar.",
-    "privacyNote": "Era informacion s'use sonque entà preparar era tua sollicitud.",
     "successTitle": "Sollicitud recebuda",
     "successDescription": "È recebut era tua sollicitud. Revisarè era informacion e te confirmarè eth pas següent.",
     "newRequest": "Crear ua auta sollicitud",
@@ -132,6 +141,8 @@
     "contactTitle": "Contacte",
     "location": "Jaén · Servici remot e presenciau segons era zòna",
     "schedule": "De deluns a diuendres · 09:00–18:00",
-    "legal": "Privacitat · Avís legau"
+    "legalAriaLabel": "Documents de privacitat",
+    "dataProtection": "Proteccion de donades",
+    "privacy": "Politica de privacitat"
   }
 }

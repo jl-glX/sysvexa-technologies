@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { ArrowRight, Check, CircleCheck, Clock3, HardDrive, Lightbulb, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
 import { CaptchaWidget } from "./components/CaptchaWidget";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
@@ -45,7 +45,7 @@ export default function App() {
         service: selection.service,
         details: String(data.get("details") ?? ""),
         locale: i18n.resolvedLanguage ?? i18n.language,
-        consent: data.get("consent") === "on",
+        consent: data.get("privacyAcknowledged") === "on",
         captchaToken,
         website: String(data.get("website") ?? ""),
       });
@@ -203,14 +203,33 @@ export default function App() {
                   t={t}
                 />
                 <label>{t("request.details")}<textarea name="details" required rows={4} placeholder={t("request.detailsPlaceholder")} /></label>
-                <label className="check-label"><input name="consent" type="checkbox" required /><span>{t("request.consent")}</span></label>
+                <aside className="privacy-summary" aria-labelledby="privacy-summary-title">
+                  <h4 id="privacy-summary-title">{t("request.privacySummary.title")}</h4>
+                  <p>{t("request.privacySummary.controller")}</p>
+                  <p>{t("request.privacySummary.purpose")}</p>
+                  <p>{t("request.privacySummary.basis")}</p>
+                  <p>{t("request.privacySummary.recipients")}</p>
+                  <p>{t("request.privacySummary.rights")}</p>
+                  <div className="privacy-summary-links">
+                    <a href="/proteccion-de-datos" target="_blank" rel="noreferrer">{t("request.privacySummary.fullInfo")}</a>
+                    <a href="/politica-de-privacidad" target="_blank" rel="noreferrer">{t("request.privacySummary.policy")}</a>
+                  </div>
+                </aside>
+                <label className="check-label">
+                  <input name="privacyAcknowledged" type="checkbox" required />
+                  <span>
+                    <Trans
+                      i18nKey="request.acknowledgement"
+                      components={{ dataProtectionLink: <a href="/proteccion-de-datos" target="_blank" rel="noreferrer" /> }}
+                    />
+                  </span>
+                </label>
                 <CaptchaWidget onToken={setCaptchaToken} resetSignal={captchaResetSignal} />
                 {requestStatus === "error" && <p className="form-error" role="alert">{t("request.error")}</p>}
                 <div className="form-submit-actions">
                   <button className="button submit-button" type="submit" name="intent" value="request" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submit")} <ArrowRight size={18} /></button>
                   <button className="button submit-button submit-and-pay-button" type="submit" name="intent" value="pay" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submitAndPay")} <ArrowRight size={18} /></button>
                 </div>
-                <p className="form-note"><ShieldCheck size={15} /> {t("request.privacyNote")}</p>
               </form>
             )}
           </div>
@@ -223,7 +242,13 @@ export default function App() {
           <div><h3>{t("footer.servicesTitle")}</h3><a href="#services">{t("services.maintenance.title")}</a><a href="#services">{t("services.computers.title")}</a><a href="#services">{t("services.networks.title")}</a><a href="#services">{t("services.security.title")}</a><a href="#services">{t("services.consulting.title")}</a></div>
           <div><h3>{t("footer.contactTitle")}</h3><a href="mailto:u3849730636@gmail.com">u3849730636@gmail.com</a><span>{t("footer.location")}</span><span>{t("footer.schedule")}</span></div>
         </div>
-        <div className="footer-bottom"><span>© {new Date().getFullYear()} Sysvexa Technologies</span><span>{t("footer.legal")}</span></div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Sysvexa Technologies</span>
+          <nav className="footer-legal" aria-label={t("footer.legalAriaLabel")}>
+            <a href="/proteccion-de-datos">{t("footer.dataProtection")}</a>
+            <a href="/politica-de-privacidad">{t("footer.privacy")}</a>
+          </nav>
+        </div>
       </footer>
     </div>
   );

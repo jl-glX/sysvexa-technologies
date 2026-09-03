@@ -110,12 +110,21 @@
     "servicePlaceholder": "Select an option",
     "details": "What do you need? *",
     "detailsPlaceholder": "Describe the issue, device, and any details that may help me...",
-    "consent": "I have read and agree to the use of my data to manage this request.",
+    "privacySummary": {
+      "title": "Basic data protection information",
+      "controller": "Controller: Sysvexa Technologies.",
+      "purpose": "Purpose: manage your request, contact you, and prepare the service or quote.",
+      "basis": "Legal basis: pre-contractual steps requested by you and, where applicable, performance of the service.",
+      "recipients": "Recipients: necessary technology providers. Your data is not sold.",
+      "rights": "Rights: access, correction, deletion, objection, restriction, and portability where applicable.",
+      "fullInfo": "Data protection information",
+      "policy": "Privacy policy"
+    },
+    "acknowledgement": "I have read the <dataProtectionLink>Data protection information</dataProtectionLink> for this request.",
     "submit": "Send request",
     "submitAndPay": "Send and pay now",
     "sending": "Sending...",
     "error": "The request could not be sent. Check the security verification and try again.",
-    "privacyNote": "Your information is used only to prepare your request.",
     "successTitle": "Request received",
     "successDescription": "I have received your request. I will review the information and confirm the next step.",
     "newRequest": "Create another request",
@@ -132,6 +141,8 @@
     "contactTitle": "Contact",
     "location": "Jaén · Remote and on-site service depending on location",
     "schedule": "Monday–Friday · 9:00 AM–6:00 PM",
-    "legal": "Privacy · Legal notice"
+    "legalAriaLabel": "Privacy documents",
+    "dataProtection": "Data protection",
+    "privacy": "Privacy policy"
   }
 }

@@ -110,12 +110,21 @@
     "servicePlaceholder": "Seleziona un'opzione",
     "details": "Di cosa hai bisogno? *",
     "detailsPlaceholder": "Descrivi il problema, il dispositivo e qualsiasi dettaglio che possa aiutarmi...",
-    "consent": "Ho letto e accetto il trattamento dei miei dati per gestire questa richiesta.",
+    "privacySummary": {
+      "title": "Informazioni di base sulla protezione dei dati",
+      "controller": "Titolare: Sysvexa Technologies.",
+      "purpose": "Finalità: gestire la richiesta, contattarti e preparare il servizio o il preventivo.",
+      "basis": "Base giuridica: misure precontrattuali richieste da te e, se applicabile, esecuzione del servizio.",
+      "recipients": "Destinatari: fornitori tecnologici necessari. I tuoi dati non vengono venduti.",
+      "rights": "Diritti: accesso, rettifica, cancellazione, opposizione, limitazione e portabilità ove applicabile.",
+      "fullInfo": "Informazioni sulla protezione dei dati",
+      "policy": "Informativa sulla privacy"
+    },
+    "acknowledgement": "Ho letto le <dataProtectionLink>Informazioni sulla protezione dei dati</dataProtectionLink> relative a questa richiesta.",
     "submit": "Invia richiesta",
     "submitAndPay": "Invia e paga ora",
     "sending": "Invio in corso...",
     "error": "Non è stato possibile inviare la richiesta. Controlla la verifica di sicurezza e riprova.",
-    "privacyNote": "Le informazioni vengono utilizzate esclusivamente per preparare la richiesta.",
     "successTitle": "Richiesta ricevuta",
     "successDescription": "Ho ricevuto la tua richiesta. Esaminerò le informazioni e confermerò il prossimo passo.",
     "newRequest": "Crea un'altra richiesta",
@@ -132,6 +141,8 @@
     "contactTitle": "Contatti",
     "location": "Jaén · Servizio da remoto e in sede in base alla zona",
     "schedule": "Dal lunedì al venerdì · 09:00–18:00",
-    "legal": "Privacy · Note legali"
+    "legalAriaLabel": "Documenti sulla privacy",
+    "dataProtection": "Protezione dei dati",
+    "privacy": "Informativa sulla privacy"
   }
 }

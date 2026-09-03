@@ -6,7 +6,8 @@
 2. Turnstile genera una verificación para la persona visitante.
 3. El formulario envía los datos y esa verificación a
    `/api/service-requests`.
-4. El Worker comprueba el origen, valida los campos y verifica Turnstile.
+4. El Worker comprueba el origen, valida los campos, exige la confirmación de
+   lectura de la información de protección de datos y verifica Turnstile.
 5. Solo si todo es correcto, guarda la solicitud en D1 y confirma el envío.
 
 El navegador nunca recibe la clave secreta de Turnstile ni acceso directo a la
@@ -57,8 +58,12 @@ ORDER BY created_at ASC;
 ## Conservación y borrado
 
 La primera versión no elimina solicitudes automáticamente: permanecen en D1
-hasta que se ejecute un borrado explícito. Esto evita adoptar sin revisión un
-plazo legal o comercial que todavía no se ha decidido.
+hasta que se ejecute un borrado explícito. La política pública establece el
+criterio de necesidad: una solicitud sin contratación se elimina cuando ya no
+resulte razonable esperar su reactivación; si existe una relación contractual,
+facturación, una reclamación o una obligación legal, se conserva únicamente la
+información necesaria durante el plazo aplicable. Hasta automatizar esta regla,
+la revisión y el borrado son una tarea manual del responsable.
 
 Desde **Studio** se puede eliminar una solicitud concreta después de comprobar
 su identificador:
@@ -91,5 +96,8 @@ de recuperación técnica no sustituye una política de conservación aprobada.
 - El campo trampa para bots tampoco se guarda.
 - El secreto de Turnstile vive únicamente en Cloudflare.
 - Las migraciones de D1 se guardan en `cloudflare/forms/migrations`.
+- `consent_at` es el nombre técnico histórico de la columna que registra la
+  confirmación de lectura; la interfaz no presenta esa casilla como permiso
+  para comunicaciones comerciales.
 - Antes de compartir o exportar datos hay que revisar que contienen información
   personal de clientes.

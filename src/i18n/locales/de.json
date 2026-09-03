@@ -110,12 +110,21 @@
     "servicePlaceholder": "Option auswählen",
     "details": "Was benötigen Sie? *",
     "detailsPlaceholder": "Beschreiben Sie das Problem, das Gerät und alle Details, die mir helfen könnten...",
-    "consent": "Ich habe die Hinweise gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung dieser Anfrage zu.",
+    "privacySummary": {
+      "title": "Grundlegende Datenschutzinformationen",
+      "controller": "Verantwortlicher: Sysvexa Technologies.",
+      "purpose": "Zweck: Ihre Anfrage bearbeiten, Sie kontaktieren und Leistung oder Angebot vorbereiten.",
+      "basis": "Rechtsgrundlage: von Ihnen gewünschte vorvertragliche Maßnahmen und gegebenenfalls Vertragserfüllung.",
+      "recipients": "Empfänger: erforderliche Technologieanbieter. Ihre Daten werden nicht verkauft.",
+      "rights": "Rechte: Auskunft, Berichtigung, Löschung, Widerspruch, Einschränkung und gegebenenfalls Übertragbarkeit.",
+      "fullInfo": "Informationen zum Datenschutz",
+      "policy": "Datenschutzerklärung"
+    },
+    "acknowledgement": "Ich habe die <dataProtectionLink>Informationen zum Datenschutz</dataProtectionLink> für diese Anfrage gelesen.",
     "submit": "Anfrage senden",
     "submitAndPay": "Senden und jetzt bezahlen",
     "sending": "Wird gesendet...",
     "error": "Die Anfrage konnte nicht gesendet werden. Prüfen Sie die Sicherheitsverifizierung und versuchen Sie es erneut.",
-    "privacyNote": "Ihre Angaben werden ausschließlich zur Vorbereitung Ihrer Anfrage verwendet.",
     "successTitle": "Anfrage eingegangen",
     "successDescription": "Ihre Anfrage ist eingegangen. Ich prüfe die Angaben und bestätige Ihnen den nächsten Schritt.",
     "newRequest": "Weitere Anfrage erstellen",
@@ -132,6 +141,8 @@
     "contactTitle": "Kontakt",
     "location": "Jaén · Fern- und Vor-Ort-Service je nach Region",
     "schedule": "Montag bis Freitag · 09:00–18:00",
-    "legal": "Datenschutz · Impressum"
+    "legalAriaLabel": "Datenschutzdokumente",
+    "dataProtection": "Datenschutz",
+    "privacy": "Datenschutzerklärung"
   }
 }
