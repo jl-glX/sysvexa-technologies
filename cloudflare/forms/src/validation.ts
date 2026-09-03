@@ -3,25 +3,24 @@ export const serviceKeys = [
   "computers",
   "networks",
   "security",
-  "consulting",
-] as const;
-
-export type ServiceKey = (typeof serviceKeys)[number];
-
-export const consultingOptionKeys = [
   "consulting_30",
   "consulting_60",
   "consulting_90",
 ] as const;
 
-export type ConsultingOptionKey = (typeof consultingOptionKeys)[number];
+export type ServiceKey = (typeof serviceKeys)[number];
+
+const legacyConsultingKeys = [
+  "consulting_30",
+  "consulting_60",
+  "consulting_90",
+] as const satisfies readonly ServiceKey[];
 
 export interface ServiceRequestInput {
   name: string;
   email: string;
   phone: string | null;
   service: ServiceKey;
-  productOption: ConsultingOptionKey | null;
   details: string;
   locale: string;
   consent: true;
@@ -85,20 +84,23 @@ export function parseServiceRequest(value: unknown): ServiceRequestInput {
   if (phoneValue.length > 40) {
     throw new ServiceRequestValidationError("phone has an invalid length");
   }
-  const service = requiredString(body.service, "service", 1, 32);
-  if (!serviceKeys.includes(service as ServiceKey)) {
-    throw new ServiceRequestValidationError("service is invalid");
-  }
-  const productOptionValue = typeof body.productOption === "string"
+  const serviceValue = requiredString(body.service, "service", 1, 32);
+  const legacyOption = typeof body.productOption === "string"
     ? body.productOption.trim()
     : "";
-  const productOption = productOptionValue || null;
-  if (service === "consulting") {
-    if (!productOption || !consultingOptionKeys.includes(productOption as ConsultingOptionKey)) {
-      throw new ServiceRequestValidationError("productOption is invalid");
+  let service: ServiceKey;
+  if (serviceValue === "consulting") {
+    if (!legacyConsultingKeys.includes(
+      legacyOption as (typeof legacyConsultingKeys)[number],
+    )) {
+      throw new ServiceRequestValidationError("service is invalid");
     }
-  } else if (productOption) {
-    throw new ServiceRequestValidationError("productOption is only valid for consulting");
+    service = legacyOption as ServiceKey;
+  } else {
+    if (!serviceKeys.includes(serviceValue as ServiceKey) || legacyOption) {
+      throw new ServiceRequestValidationError("service is invalid");
+    }
+    service = serviceValue as ServiceKey;
   }
   const details = requiredString(body.details, "details", 10, 4000);
   const locale = requiredString(body.locale, "locale", 2, 20);
@@ -116,8 +118,7 @@ export function parseServiceRequest(value: unknown): ServiceRequestInput {
     name,
     email,
     phone: phoneValue || null,
-    service: service as ServiceKey,
-    productOption: productOption as ConsultingOptionKey | null,
+    service,
     details,
     locale,
     consent: true,

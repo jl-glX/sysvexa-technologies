@@ -47,7 +47,8 @@
     "kicker": "Qué pogui hèr",
     "title": "Solucions informatiques que pòs compréner",
     "description": "Servicis concrèts, abast clar e recomanacions aunèstes. Eth punt de partida ei çò que vertadèrament as de besonh.",
-    "learnMore": "Pagar dirèctament",
+    "paymentFallback": "Es ligams de pagament son disponibles en cas qu'eth formulari non ne sigue.",
+    "learnMore": "Ligam de pagament alternatiu",
     "maintenance": {
       "title": "Mantenença e reparacion",
       "description": "Diagnostic, metuda a punt, neteja e solucion d'avaries en ordenadors e periferics."
@@ -111,6 +112,7 @@
     "detailsPlaceholder": "Descriu eth problèma, er equipament e quinsevolh detalh que pogue ajudar-me...",
     "consent": "È liejut e accèpti eth tractament des mies donades entà gerir aguesta sollicitud.",
     "submit": "Enviar era sollicitud",
+    "submitAndPay": "Enviar e pagar ara",
     "sending": "En tot enviar...",
     "error": "Non s'a podut enviar era sollicitud. Compròva era verificacion e torna-ac a provar.",
     "privacyNote": "Era informacion s'use sonque entà preparar era tua sollicitud.",

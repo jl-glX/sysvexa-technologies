@@ -1,8 +1,10 @@
 # Preparación de Stripe
 
 Estado: **Payment Links activos; Checkout propio preparado y desactivado**.
-La web ofrece pagos directos alojados por Stripe, pero el formulario de
-solicitud sigue siendo independiente y no cobra al enviarse.
+La web ofrece pagos alojados por Stripe como alternativa si el formulario no
+está disponible. Desde el formulario, `Enviar solicitud` solo registra el caso
+y `Enviar y pagar ahora` lo registra primero y después abre el Payment Link del
+producto o duración seleccionados.
 
 ## Catálogo público y pagos directos
 
@@ -19,9 +21,14 @@ API ni permite que el navegador elija un `price_...` o un importe arbitrario.
 | Consultoría informática y tecnológica, 60 min | 43 € | `https://book.stripe.com/aFa9AL6dv05Q5X6aWW97G0a` |
 | Consultoría informática y tecnológica, 90 min | 66 € | `https://book.stripe.com/28EdR131j7yigBK8OO97G09` |
 
-Cada tarjeta abre un cajón con el enlace y un QR. El QR se genera localmente en
-el navegador a partir del mismo enlace, por lo que no depende de un servicio
-externo ni puede quedar desactualizado respecto al botón.
+Cada tarjeta abre un cajón de respaldo con el enlace y un QR. El QR se genera
+localmente en el navegador a partir del mismo enlace, por lo que no depende de
+un servicio externo ni puede quedar desactualizado respecto al botón.
+
+El formulario guarda la solicitud antes de redirigir. La modalidad de
+consultoría se representa directamente mediante `service=consulting_30`,
+`service=consulting_60` o `service=consulting_90`; no se persiste una segunda
+columna para la variante.
 
 El precio libre de consultoría y el antiguo enlace que cobraba 60 minutos con
 un selector meramente informativo no se publican. Las tres duraciones usan

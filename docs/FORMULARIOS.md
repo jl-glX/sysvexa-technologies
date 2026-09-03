@@ -25,10 +25,10 @@ solicitud y su entrega no condiciona la confirmación que ve el cliente.
 5. Entrar en **Studio** y seleccionar `sysvexa_service_requests`.
 
 Las solicitudes más recientes se identifican por `created_at`. Los campos
-`name`, `email`, `phone`, `service` y `details` contienen el contacto. Cuando
-`service` es `consulting`, `product_option` guarda una de las tres duraciones:
-`consulting_30`, `consulting_60` o `consulting_90`. El campo `status` permite
-llevar el seguimiento:
+`name`, `email`, `phone`, `service` y `details` contienen el contacto. Las tres
+duraciones de consultoría se guardan directamente en `service` como
+`consulting_30`, `consulting_60` o `consulting_90`; no necesitan una columna
+adicional. El campo `status` permite llevar el seguimiento:
 
 - `new`: pendiente de revisar;
 - `contacted`: ya se ha respondido;
@@ -48,7 +48,7 @@ WHERE id = '<REQUEST_ID>';
 Para ver primero las pendientes:
 
 ```sql
-SELECT id, created_at, name, email, phone, service, product_option, details
+SELECT id, created_at, name, email, phone, service, details
 FROM sysvexa_service_requests
 WHERE status = 'new'
 ORDER BY created_at ASC;

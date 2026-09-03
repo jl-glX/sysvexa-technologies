@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { products } from "./products";
+import { products, resolveProductSelection } from "./products";
 
 describe("public product catalog", () => {
   it("exposes one unique Stripe Payment Link per fixed price", () => {
@@ -16,5 +16,17 @@ describe("public product catalog", () => {
       { minutes: 60, amountCents: 4_300 },
       { minutes: 90, amountCents: 6_600 },
     ]);
+  });
+
+  it("resolves the stored service and payment link from one selection", () => {
+    expect(resolveProductSelection("computers", "")).toMatchObject({
+      service: "computers",
+      paymentOption: { amountCents: 16_000 },
+    });
+    expect(resolveProductSelection("consulting", "consulting_90")).toMatchObject({
+      service: "consulting_90",
+      paymentOption: { amountCents: 6_600 },
+    });
+    expect(resolveProductSelection("consulting", "")).toBeNull();
   });
 });

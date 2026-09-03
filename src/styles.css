@@ -77,6 +77,7 @@ h1 span { color: var(--blue); }
 .section-heading { max-width: 690px; margin: 0 auto 48px; text-align: center; }
 .section-heading h2, .request-copy h2 { margin: 13px 0 14px; color: var(--ink); font-size: clamp(34px, 3.6vw, 50px); line-height: 1.12; letter-spacing: -2.2px; }
 .section-heading p, .request-copy > p { margin: 0; color: #6a7486; font-size: 16px; line-height: 1.65; }
+.section-heading .payment-fallback-note { margin-top: 12px; color: #4f5f78; font-size: 13px; }
 .service-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; max-width: 1320px; margin: auto; align-items: start; }
 .service-card { min-height: 330px; padding: 28px 26px; border: 1px solid #e5eaf1; border-radius: 16px; background: #fff; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border .25s; }
 .service-card:hover { transform: translateY(-6px); border-color: #cbdcff; box-shadow: 0 22px 48px rgba(25,55,110,.1); }
@@ -156,7 +157,10 @@ input:focus, select:focus, textarea:focus { border-color: #7ca6fa; box-shadow: 0
 .captcha-error p, .form-error { margin: 0; font-size: 12px; line-height: 1.5; }
 .captcha-error button { margin-top: 8px; padding: 0; border: 0; color: #1d4ed8; background: transparent; font-weight: 700; cursor: pointer; }
 .form-error { margin: 0 0 14px; padding: 11px 13px; border-radius: 9px; color: #991b1b; background: #fef2f2; }
-.submit-button { width: 100%; border: 0; }
+.form-submit-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.submit-button { width: 100%; border: 0; padding-inline: 14px; }
+.submit-and-pay-button { background: #0b1220; box-shadow: 0 12px 28px rgba(11,18,32,.2); }
+.submit-and-pay-button:hover { background: #1a263a; }
 .submit-button:disabled { cursor: not-allowed; transform: none; background: #94a3b8; box-shadow: none; }
 .form-note { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 14px 0 0; color: #8b94a3; font-size: 11px; }
 .success-state { min-height: 545px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
@@ -218,6 +222,7 @@ footer { color: #b6c0cf; background: #0b1220; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .product-choice-grid { grid-template-columns: 1fr; }
   .consulting-options > div { grid-template-columns: 1fr; }
+  .form-submit-actions { grid-template-columns: 1fr; }
   .form-heading { align-items: flex-start; }
   .footer-main { grid-template-columns: 1fr; gap: 34px; }
   .footer-bottom { flex-direction: column; }

@@ -47,7 +47,8 @@
     "kicker": "Cosa faccio",
     "title": "Soluzioni informatiche facili da capire",
     "description": "Servizi concreti, ambito chiaro e consigli onesti. Parto da ciò che ti serve davvero.",
-    "learnMore": "Paga direttamente",
+    "paymentFallback": "I link di pagamento sono disponibili nel caso in cui il modulo non lo sia.",
+    "learnMore": "Link di pagamento alternativo",
     "maintenance": {
       "title": "Manutenzione e riparazione",
       "description": "Diagnosi, ottimizzazione, pulizia e risoluzione dei guasti di computer e periferiche."
@@ -111,6 +112,7 @@
     "detailsPlaceholder": "Descrivi il problema, il dispositivo e qualsiasi dettaglio che possa aiutarmi...",
     "consent": "Ho letto e accetto il trattamento dei miei dati per gestire questa richiesta.",
     "submit": "Invia richiesta",
+    "submitAndPay": "Invia e paga ora",
     "sending": "Invio in corso...",
     "error": "Non è stato possibile inviare la richiesta. Controlla la verifica di sicurezza e riprova.",
     "privacyNote": "Le informazioni vengono utilizzate esclusivamente per preparare la richiesta.",

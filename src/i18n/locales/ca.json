@@ -47,7 +47,8 @@
     "kicker": "Què faig",
     "title": "Solucions informàtiques que pots entendre",
     "description": "Serveis concrets, abast clar i recomanacions honestes. Començo pel que realment necessites.",
-    "learnMore": "Pagar directament",
+    "paymentFallback": "Els enllaços de pagament estan disponibles en cas que el formulari no ho estigui.",
+    "learnMore": "Enllaç de pagament alternatiu",
     "maintenance": {
       "title": "Manteniment i reparació",
       "description": "Diagnòstic, posada a punt, neteja i solució d'avaries en ordinadors i perifèrics."
@@ -111,6 +112,7 @@
     "detailsPlaceholder": "Descriu el problema, l'equip i qualsevol detall que em pugui ajudar...",
     "consent": "He llegit i accepto el tractament de les meves dades per gestionar aquesta sol·licitud.",
     "submit": "Enviar sol·licitud",
+    "submitAndPay": "Enviar i pagar ara",
     "sending": "Enviant...",
     "error": "No s'ha pogut enviar la sol·licitud. Comprova la verificació i torna-ho a provar.",
     "privacyNote": "La informació només s'utilitza per preparar la teva sol·licitud.",

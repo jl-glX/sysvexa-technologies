@@ -8,6 +8,12 @@ export const productKeys = [
 
 export type ProductKey = (typeof productKeys)[number];
 
+export type ServiceRequestKey =
+  | Exclude<ProductKey, "consulting">
+  | "consulting_30"
+  | "consulting_60"
+  | "consulting_90";
+
 export interface PaymentOption {
   key: string;
   minutes?: number;
@@ -19,6 +25,11 @@ export interface PaymentOption {
 export interface Product {
   key: ProductKey;
   paymentOptions: readonly PaymentOption[];
+}
+
+export interface ResolvedProductSelection {
+  service: ServiceRequestKey;
+  paymentOption: PaymentOption;
 }
 
 export const products: readonly Product[] = Object.freeze([
@@ -93,6 +104,24 @@ export const products: readonly Product[] = Object.freeze([
     ],
   },
 ]);
+
+export function resolveProductSelection(
+  productKey: ProductKey | "",
+  optionKey: string,
+): ResolvedProductSelection | null {
+  const product = products.find(({ key }) => key === productKey);
+  if (!product) return null;
+
+  const paymentOption = product.key === "consulting"
+    ? product.paymentOptions.find(({ key }) => key === optionKey)
+    : product.paymentOptions[0];
+  if (!paymentOption) return null;
+
+  return {
+    service: (product.key === "consulting" ? paymentOption.key : product.key) as ServiceRequestKey,
+    paymentOption,
+  };
+}
 
 export function formatProductPrice(
   amountCents: number,

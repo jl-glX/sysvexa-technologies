@@ -40,19 +40,16 @@ describe("service request validation", () => {
     ).toThrow(ServiceRequestValidationError);
   });
 
-  it("accepts only the three catalogued consulting durations", () => {
+  it("accepts the consulting duration as the service value", () => {
+    expect(parseServiceRequest({
+      ...validRequest,
+      service: "consulting_60",
+    })).toMatchObject({ service: "consulting_60" });
     expect(parseServiceRequest({
       ...validRequest,
       service: "consulting",
-      productOption: "consulting_60",
-    })).toMatchObject({
-      service: "consulting",
-      productOption: "consulting_60",
-    });
-    expect(() => parseServiceRequest({
-      ...validRequest,
-      service: "consulting",
-    })).toThrow(ServiceRequestValidationError);
+      productOption: "consulting_90",
+    })).toMatchObject({ service: "consulting_90" });
     expect(() => parseServiceRequest({
       ...validRequest,
       productOption: "consulting_60",

@@ -1,7 +1,6 @@
 export interface ServiceRequestNotification {
   requestId: string;
   service: string;
-  productOption: string | null;
   createdAt: string;
 }
 
@@ -21,7 +20,6 @@ export function buildServiceRequestNotification(
       "",
       `Identificador: ${notification.requestId}`,
       `Servicio: ${notification.service}`,
-      ...(notification.productOption ? [`Modalidad: ${notification.productOption}`] : []),
       `Fecha UTC: ${notification.createdAt}`,
       "",
       "Consulta los datos de contacto y la descripción en Cloudflare D1.",

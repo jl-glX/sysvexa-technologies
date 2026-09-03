@@ -5,7 +5,7 @@ import { CaptchaWidget } from "./components/CaptchaWidget";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PaymentDrawer } from "./components/PaymentDrawer";
 import { ProductSelector } from "./components/ProductSelector";
-import { products, type ProductKey } from "./lib/products";
+import { products, resolveProductSelection, type ProductKey } from "./lib/products";
 import { submitServiceRequest } from "./lib/service-requests";
 
 const productIcons = {
@@ -31,14 +31,18 @@ export default function App() {
     if (!captchaToken || requestStatus === "sending") return;
     const form = event.currentTarget;
     const data = new FormData(form);
+    const selection = resolveProductSelection(selectedProduct, selectedOption);
+    if (!selection) return;
+    const submitter = (event.nativeEvent as SubmitEvent).submitter;
+    const shouldPay = submitter instanceof HTMLButtonElement
+      && submitter.value === "pay";
     setRequestStatus("sending");
     try {
       await submitServiceRequest({
         name: String(data.get("name") ?? ""),
         email: String(data.get("email") ?? ""),
         phone: String(data.get("phone") ?? ""),
-        service: String(data.get("service") ?? ""),
-        productOption: String(data.get("productOption") ?? "") || undefined,
+        service: selection.service,
         details: String(data.get("details") ?? ""),
         locale: i18n.resolvedLanguage ?? i18n.language,
         consent: data.get("consent") === "on",
@@ -49,6 +53,7 @@ export default function App() {
       setSelectedProduct("");
       setSelectedOption("");
       setRequestStatus("sent");
+      if (shouldPay) window.location.assign(selection.paymentOption.paymentUrl);
     } catch {
       setRequestStatus("error");
     } finally {
@@ -121,6 +126,7 @@ export default function App() {
             <span className="kicker">{t("services.kicker")}</span>
             <h2>{t("services.title")}</h2>
             <p>{t("services.description")}</p>
+            <p className="payment-fallback-note">{t("services.paymentFallback")}</p>
           </div>
           <div className="service-grid">
             {products.map((product, index) => {
@@ -200,7 +206,10 @@ export default function App() {
                 <label className="check-label"><input name="consent" type="checkbox" required /><span>{t("request.consent")}</span></label>
                 <CaptchaWidget onToken={setCaptchaToken} resetSignal={captchaResetSignal} />
                 {requestStatus === "error" && <p className="form-error" role="alert">{t("request.error")}</p>}
-                <button className="button submit-button" type="submit" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submit")} <ArrowRight size={18} /></button>
+                <div className="form-submit-actions">
+                  <button className="button submit-button" type="submit" name="intent" value="request" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submit")} <ArrowRight size={18} /></button>
+                  <button className="button submit-button submit-and-pay-button" type="submit" name="intent" value="pay" disabled={!captchaToken || requestStatus === "sending"}>{requestStatus === "sending" ? t("request.sending") : t("request.submitAndPay")} <ArrowRight size={18} /></button>
+                </div>
                 <p className="form-note"><ShieldCheck size={15} /> {t("request.privacyNote")}</p>
               </form>
             )}

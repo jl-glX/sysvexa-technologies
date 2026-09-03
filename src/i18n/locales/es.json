@@ -47,7 +47,8 @@
     "kicker": "Qué hago",
     "title": "Soluciones informáticas que puedes entender",
     "description": "Servicios concretos, alcance claro y recomendaciones honestas. Empiezo por lo que realmente necesitas.",
-    "learnMore": "Pagar directamente",
+    "paymentFallback": "Los enlaces de pago están disponibles en caso de que el formulario no esté disponible.",
+    "learnMore": "Enlace de pago alternativo",
     "maintenance": {
       "title": "Diagnóstico y mantenimiento informático",
       "description": "Revisión, diagnóstico, mantenimiento preventivo, limpieza, actualización y puesta a punto de ordenadores."
@@ -111,6 +112,7 @@
     "detailsPlaceholder": "Describe el problema, el equipo y cualquier detalle que pueda ayudarme...",
     "consent": "He leído y acepto el tratamiento de mis datos para gestionar esta solicitud.",
     "submit": "Enviar solicitud",
+    "submitAndPay": "Enviar y pagar ahora",
     "sending": "Enviando...",
     "error": "No se ha podido enviar la solicitud. Comprueba la verificación e inténtalo de nuevo.",
     "privacyNote": "La información viaja únicamente para preparar tu solicitud.",

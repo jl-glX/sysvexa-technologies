@@ -130,7 +130,6 @@ async function handleRequest(
     sendServiceRequestNotification(env, {
       requestId,
       service: input.service,
-      productOption: input.productOption,
       createdAt: new Date().toISOString(),
     }).catch((error) => {
       console.error(

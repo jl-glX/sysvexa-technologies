@@ -47,7 +47,8 @@
     "kicker": "Que fago",
     "title": "Solucións informáticas que podes entender",
     "description": "Servizos concretos, alcance claro e recomendacións honestas. Comezo polo que realmente necesitas.",
-    "learnMore": "Pagar directamente",
+    "paymentFallback": "As ligazóns de pagamento están dispoñibles no caso de que o formulario non o estea.",
+    "learnMore": "Ligazón de pagamento alternativa",
     "maintenance": {
       "title": "Mantemento e reparación",
       "description": "Diagnóstico, posta a punto, limpeza e solución de avarías en ordenadores e periféricos."
@@ -111,6 +112,7 @@
     "detailsPlaceholder": "Describe o problema, o equipo e calquera detalle que poida axudarme...",
     "consent": "Lin e acepto o tratamento dos meus datos para xestionar esta solicitude.",
     "submit": "Enviar solicitude",
+    "submitAndPay": "Enviar e pagar agora",
     "sending": "Enviando...",
     "error": "Non se puido enviar a solicitude. Comproba a verificación e téntao de novo.",
     "privacyNote": "A información úsase unicamente para preparar a túa solicitude.",

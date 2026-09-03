@@ -62,7 +62,7 @@ export function ProductSelector({
               <label className={selectedOption === option.key ? "is-selected" : ""} key={option.key}>
                 <input
                   type="radio"
-                  name="productOption"
+                  name="consultingVariant"
                   value={option.key}
                   checked={selectedOption === option.key}
                   onChange={() => setSelectedOption(option.key)}

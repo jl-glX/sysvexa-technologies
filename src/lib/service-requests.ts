@@ -3,7 +3,6 @@ export interface ServiceRequestPayload {
   email: string;
   phone: string;
   service: string;
-  productOption?: string;
   details: string;
   locale: string;
   consent: boolean;
