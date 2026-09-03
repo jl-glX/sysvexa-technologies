@@ -184,7 +184,7 @@ footer { color: #b6c0cf; background: #0b1220; }
 .footer-main a:hover { color: white; }
 .footer-bottom { padding: 20px clamp(22px, 7vw, 108px); display: flex; justify-content: space-between; gap: 25px; border-top: 1px solid #202a3a; font-size: 11px; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-.footer-legal a { text-decoration: underline; text-decoration-color: #526075; text-underline-offset: 3px; }
+.footer-legal a { display: inline-flex; align-items: center; gap: 5px; text-decoration: underline; text-decoration-color: #526075; text-underline-offset: 3px; }
 .footer-legal a:hover { color: #fff; text-decoration-color: #fff; }
 
 .legal-page { min-height: 100vh; color: #1f2937; background: #f5f8fc; }
@@ -218,6 +218,7 @@ footer { color: #b6c0cf; background: #0b1220; }
 .legal-footer { padding: 27px clamp(22px, 8vw, 128px); display: flex; justify-content: space-between; gap: 24px; color: #b6c0cf; background: #0b1220; font-size: 13px; }
 .legal-footer > a, .legal-footer nav { display: flex; align-items: center; gap: 8px; }
 .legal-footer nav { flex-wrap: wrap; gap: 8px 20px; }
+.legal-footer nav a { display: inline-flex; align-items: center; gap: 6px; }
 .legal-footer a:hover { color: #fff; }
 
 @media (max-width: 1100px) {

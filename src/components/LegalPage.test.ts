@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { resolveLegalPage } from "./LegalPage";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { SOURCE_REPOSITORY_URL } from "../lib/site-links";
+import { LegalPage, resolveLegalPage } from "./LegalPage";
 
 describe("legal page routing", () => {
   it.each([
@@ -15,4 +18,15 @@ describe("legal page routing", () => {
     expect(resolveLegalPage("/")).toBeNull();
     expect(resolveLegalPage("/services")).toBeNull();
   });
+
+  it.each(["data-protection", "privacy"] as const)(
+    "documents encryption and links GitHub in the %s page footer",
+    (kind) => {
+      const html = renderToStaticMarkup(createElement(LegalPage, { kind }));
+      expect(html).toContain("TLS 1.2");
+      expect(html).toContain("AES-256");
+      expect(html).toContain(`href="${SOURCE_REPOSITORY_URL}"`);
+      expect(html).toContain("GitHub");
+    },
+  );
 });

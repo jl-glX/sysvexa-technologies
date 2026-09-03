@@ -1,12 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { ArrowRight, Check, CircleCheck, Clock3, HardDrive, Lightbulb, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
+import { ArrowRight, Check, CircleCheck, Clock3, ExternalLink, HardDrive, Lightbulb, Menu, Network, ShieldCheck, Sparkles, Wrench, X } from "lucide-react";
 import { CaptchaWidget } from "./components/CaptchaWidget";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { PaymentDrawer } from "./components/PaymentDrawer";
 import { ProductSelector } from "./components/ProductSelector";
 import { products, resolveProductSelection, type ProductKey } from "./lib/products";
 import { submitServiceRequest } from "./lib/service-requests";
+import { SOURCE_REPOSITORY_URL } from "./lib/site-links";
 import { navigateToStripePayment } from "./lib/transport-security";
 
 const productIcons = {
@@ -248,6 +249,9 @@ export default function App() {
           <nav className="footer-legal" aria-label={t("footer.legalAriaLabel")}>
             <a href="/proteccion-de-datos">{t("footer.dataProtection")}</a>
             <a href="/politica-de-privacidad">{t("footer.privacy")}</a>
+            <a href={SOURCE_REPOSITORY_URL} target="_blank" rel="noreferrer">
+              <ExternalLink size={13} aria-hidden="true" /> GitHub
+            </a>
           </nav>
         </div>
       </footer>

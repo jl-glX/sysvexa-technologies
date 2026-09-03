@@ -1,4 +1,5 @@
 import { ArrowLeft, ExternalLink, Mail } from "lucide-react";
+import { SOURCE_REPOSITORY_URL } from "../lib/site-links";
 
 const CONTACT_EMAIL = "u3849730636@gmail.com";
 
@@ -99,8 +100,17 @@ function DataProtectionContent() {
         </section>
 
         <section>
-          <h2>Seguridad y datos obligatorios</h2>
-          <p>Los campos marcados con un asterisco son necesarios para tramitar la solicitud. Se aplican medidas de control de acceso, validación, limitación de tamaño, protección frente a automatizaciones y registros técnicos con rotación para reducir el riesgo de acceso, alteración o pérdida indebidos.</p>
+          <h2>Cifrado y protección de las solicitudes</h2>
+          <p>El formulario se ofrece mediante HTTPS. Los datos viajan cifrados con TLS 1.2 o TLS 1.3 desde el navegador hasta el servidor web y desde este hasta el Worker de Cloudflare. El sitio utiliza HSTS para indicar a los navegadores compatibles que deben volver a conectarse mediante HTTPS.</p>
+          <p>Cloudflare D1 cifra automáticamente la base de datos en reposo con AES-256 y protege mediante TLS las comunicaciones entre el Worker y D1. Cloudflare administra las claves de ese cifrado. Estas medidas se complementan con controles de acceso y no sustituyen la revisión de quién puede consultar o eliminar las solicitudes.</p>
+          <p>Las claves privadas de Turnstile y otros secretos operativos se mantienen en la configuración protegida del Worker y no se incluyen en el código enviado al navegador. No se añade una clave AES compartida al formulario porque quedaría expuesta en el JavaScript público y no ofrecería una protección adicional fiable frente a TLS.</p>
+          <p>Si eliges pagar, la redirección se limita a páginas HTTPS alojadas en los dominios de pago autorizados de Stripe. El enlace de redirección no incorpora los datos escritos en el formulario y los datos completos de la tarjeta se introducen directamente en Stripe.</p>
+        </section>
+
+        <section>
+          <h2>Otras medidas y datos obligatorios</h2>
+          <p>Los campos marcados con un asterisco son necesarios para tramitar la solicitud. Se aplican verificación de origen, validación y limitación de tamaño, protección frente a automatizaciones con Turnstile, restricciones sobre los destinos de pago y registros técnicos con rotación para reducir el riesgo de acceso, alteración o pérdida indebidos.</p>
+          <p>Ninguna transmisión por Internet puede presentarse como exenta de todo riesgo. Las medidas se revisarán y actualizarán cuando cambien el servicio, los riesgos o el estado de la técnica.</p>
         </section>
 
         <section>
@@ -157,6 +167,13 @@ function PrivacyContent() {
         </section>
 
         <section>
+          <h2>Seguridad y cifrado</h2>
+          <p>Las conexiones públicas del sitio, el envío del formulario y la redirección a Stripe utilizan HTTPS con TLS 1.2 o TLS 1.3. HSTS ayuda a evitar que el navegador vuelva a utilizar una conexión sin cifrar. El servidor y el Worker rechazan el envío del formulario mediante HTTP público.</p>
+          <p>Las solicitudes se almacenan en Cloudflare D1, que cifra automáticamente sus objetos en reposo con AES-256 y protege con TLS el tráfico entre el Worker y la base de datos. Las claves de ese cifrado son administradas por Cloudflare. Los secretos operativos no se entregan al navegador.</p>
+          <p>Se aplican controles adicionales de origen, tamaño y formato de los datos, protección frente a automatizaciones, restricción exacta de los destinos de pago y rotación de registros técnicos. Estas medidas buscan preservar la confidencialidad, integridad y disponibilidad de la información y se revisan de acuerdo con el riesgo.</p>
+        </section>
+
+        <section>
           <h2>Conservación</h2>
           <p>Las solicitudes se conservan mientras sea necesario gestionarlas y durante los plazos relacionados con el servicio, las obligaciones legales o posibles reclamaciones. Los registros de acceso del servidor rotan y tienen una conservación operativa máxima configurada de 30 días. La preferencia de idioma permanece en el navegador hasta que se cambie o se borre el almacenamiento local.</p>
         </section>
@@ -180,6 +197,12 @@ function PrivacyContent() {
           <h2>Información específica del formulario</h2>
           <p>Consulta la <a href="/proteccion-de-datos">Información sobre protección de datos</a> para ver el detalle aplicable a una solicitud de servicio.</p>
         </section>
+
+        <section>
+          <h2>Código fuente y enlace a GitHub</h2>
+          <p>El pie de página contiene un enlace externo al repositorio público del sitio en GitHub. Sysvexa no carga scripts, imágenes ni otros recursos de GitHub al mostrar esta web. GitHub recibirá la información técnica propia de una navegación externa solo si decides abrir el enlace y aplicará su propia política de privacidad.</p>
+          <p>El repositorio contiene código y documentación técnica; no contiene las solicitudes guardadas en D1, las claves privadas ni los secretos del Worker.</p>
+        </section>
       </main>
     </>
   );
@@ -194,6 +217,9 @@ export function LegalPage({ kind }: LegalPageProps) {
         <nav aria-label="Documentos legales">
           <a href="/proteccion-de-datos">Protección de datos</a>
           <a href="/politica-de-privacidad">Política de privacidad</a>
+          <a href={SOURCE_REPOSITORY_URL} target="_blank" rel="noreferrer">
+            <ExternalLink size={15} aria-hidden="true" /> GitHub
+          </a>
         </nav>
       </footer>
     </div>
